@@ -1,5 +1,7 @@
 # HumanError
 
+[![Build Status](https://secure.travis-ci.org/thekompanee/human_error.png?branch=master)](http://travis-ci.org/thekompanee/human_error) [![Code Climate](https://codeclimate.com/github/thekompanee/human_error.png)](https://codeclimate.com/github/thekompanee/human_error) [![Code Climate](https://codeclimate.com/github/thekompanee/human_error/coverage.png)](https://codeclimate.com/github/thekompanee/human_error)
+
 TODO: Write a gem description
 
 ## Installation
