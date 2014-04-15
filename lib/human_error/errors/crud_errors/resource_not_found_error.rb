@@ -10,10 +10,6 @@ class   ResourceNotFoundError < RequestError
     404
   end
 
-  def knowledgebase_article_id
-    '1234567890'
-  end
-
   def developer_message
     "The #{resource_name} you attempted to #{action} for this request is either not authorized for the authenticated user or does not exist."
   end

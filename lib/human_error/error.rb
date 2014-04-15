@@ -1,12 +1,14 @@
 require 'json'
 require 'human_error/configuration'
 require 'human_error/error_code_directory'
+require 'human_error/knowledgebase_id_directory'
 
 module  HumanError
 module  Error
   attr_accessor :api_version,
                 :api_error_documentation_url,
                 :knowledgebase_url,
+                :knowledgebase_article_id,
                 :code
 
   def initialize(**args)
@@ -21,6 +23,10 @@ module  Error
 
   def code
     @code || ErrorCodeDirectory.lookup(self.class.name)
+  end
+
+  def knowledgebase_article_id
+    @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
   end
 
   def to_json

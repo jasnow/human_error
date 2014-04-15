@@ -9,8 +9,7 @@ class   RequestError < RuntimeError
   attr_accessor :http_status,
                 :developer_message,
                 :developer_details,
-                :friendly_message,
-                :knowledgebase_article_id
+                :friendly_message
 
   def as_json(options = {})
     {

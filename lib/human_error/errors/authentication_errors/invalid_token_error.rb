@@ -18,10 +18,6 @@ class   InvalidTokenError < RequestError
     401
   end
 
-  def knowledgebase_article_id
-    '1234567890'
-  end
-
   def developer_message
     'The token you attempted to use for this request is invalid for this resource.  Please double-check and try again.'
   end

@@ -18,10 +18,6 @@ class   InvalidUsernameOrPasswordError < RequestError
     401
   end
 
-  def knowledgebase_article_id
-    '1234567890'
-  end
-
   def developer_message
     'Either the username or password passed in or this request is invalid.  Please double-check and try again.'
   end
