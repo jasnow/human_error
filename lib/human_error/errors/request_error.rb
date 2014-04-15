@@ -33,10 +33,6 @@ class   RequestError < RuntimeError
     "#{api_error_documentation_url}/#{code}?version=#{api_version}"
   end
 
-  def customer_support_uri
-    "#{knowledgebase_url}/#{knowledgebase_article_id}"
-  end
-
   def base_message_key
     HumanError::Utilities::String.
       underscore(self.class.name).

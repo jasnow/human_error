@@ -29,6 +29,10 @@ module  Error
     @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
   end
 
+  def customer_support_uri
+    "#{knowledgebase_url}/#{knowledgebase_article_id}"
+  end
+
   def to_json
     JSON.dump(as_json)
   end
