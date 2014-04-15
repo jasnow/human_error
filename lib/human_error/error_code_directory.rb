@@ -12,6 +12,7 @@ class   ErrorCodeDirectory
       'HumanError::Errors::InvalidUsernameOrPasswordError' => 1004,
       'HumanError::Errors::ResourceNotFoundError'          => 1005,
       'HumanError::Errors::ResourcePersistenceError'       => 1006,
+      'Apill::Errors::InvalidApiRequestError'              => 1007,
     }
   end
 end
