@@ -1,3 +1,4 @@
+require 'json'
 require 'human_error/configuration'
 require 'human_error/error_code_directory'
 
@@ -20,6 +21,10 @@ module  Error
 
   def code
     @code || ErrorCodeDirectory.lookup(self.class.name)
+  end
+
+  def to_json
+    JSON.dump(as_json)
   end
 
   def wrap(other)
