@@ -37,7 +37,7 @@ module  Error
     "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end
 
-  def to_json
+  def to_json(options = {})
     JSON.dump(as_json)
   end
 
