@@ -29,6 +29,10 @@ module  Error
     @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
   end
 
+  def developer_documentation_uri
+    "#{api_error_documentation_url}/#{code}?version=#{api_version}"
+  end
+
   def customer_support_uri
     "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end

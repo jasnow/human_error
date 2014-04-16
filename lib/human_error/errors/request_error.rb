@@ -29,10 +29,6 @@ class   RequestError < RuntimeError
 
   private
 
-  def developer_documentation_uri
-    "#{api_error_documentation_url}/#{code}?version=#{api_version}"
-  end
-
   def base_message_key
     HumanError::Utilities::String.
       underscore(self.class.name).
