@@ -23,5 +23,17 @@ describe  Configuration do
 
     expect(configuration.knowledgebase_url).to eql 'whateeeeeever'
   end
+
+  it 'can convert itself into a hash' do
+    configuration                             = Configuration.new
+    configuration.knowledgebase_url           = 'knowledgebase_url'
+    configuration.api_error_documentation_url = 'api_error_documentation_url'
+    configuration.api_version                 = 'api_version'
+
+    expect(configuration.to_h).to eql(
+      knowledgebase_url:           'knowledgebase_url',
+      api_error_documentation_url: 'api_error_documentation_url',
+      api_version:                 'api_version',)
+  end
 end
 end
