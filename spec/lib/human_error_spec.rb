@@ -13,4 +13,10 @@ describe HumanError do
 
     expect(human_error.configuration.api_version).to eql 'foo'
   end
+
+  it 'can lookup errors' do
+    human_error = HumanError.new
+
+    expect(human_error.fetch('RequestError')).to be_a HumanError::Errors::RequestError
+  end
 end
