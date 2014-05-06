@@ -9,13 +9,6 @@ class   ResourcePersistenceError < RequestError
   attr_accessor :errors,
                 :attributes
 
-  def initialize(errors: nil, attributes: nil, **args)
-    self.errors     = errors
-    self.attributes = attributes
-
-    super **args
-  end
-
   def http_status
     422
   end

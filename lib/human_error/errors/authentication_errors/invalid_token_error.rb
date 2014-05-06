@@ -8,10 +8,6 @@ class   InvalidTokenError < RequestError
 
   attr_accessor :authentication_token
 
-  def initialize(authentication_token: nil, **args)
-    super **args
-  end
-
   def http_status
     401
   end

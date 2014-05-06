@@ -8,12 +8,6 @@ class   InvalidUsernameOrPasswordError < RequestError
 
   attr_accessor :username
 
-  def initialize(username: nil, **args)
-    self.username = username
-
-    super **args
-  end
-
   def http_status
     401
   end
