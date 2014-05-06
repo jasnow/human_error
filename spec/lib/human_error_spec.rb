@@ -29,4 +29,14 @@ describe HumanError do
 
     expect(fetched_error.api_version).to eql 'foo'
   end
+
+  it 'can override values in the local configuration with explicit values passed when looking up an error' do
+    human_error = HumanError.new do |config|
+      config.api_version = 'foo'
+    end
+
+    fetched_error = human_error.fetch('RequestError', api_version: 'bar')
+
+    expect(fetched_error.api_version).to eql 'bar'
+  end
 end

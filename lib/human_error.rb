@@ -12,6 +12,7 @@ class   HumanError
   end
 
   def fetch(error_type, **args)
-    Object.const_get("HumanError::Errors::#{error_type}").new
+    Object.const_get("HumanError::Errors::#{error_type}").
+      new(configuration.to_h.merge(**args))
   end
 end
