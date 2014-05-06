@@ -13,6 +13,7 @@ class   ErrorCodeDirectory
       'HumanError::Errors::ResourceNotFoundError'          => 1005,
       'HumanError::Errors::ResourcePersistenceError'       => 1006,
       'Apill::Errors::InvalidApiRequestError'              => 1007,
+      'HumanError::Errors::DuplicateAuthenticationError'   => 1008,
     }
   end
 end

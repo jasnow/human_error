@@ -9,8 +9,6 @@ class   InvalidTokenError < RequestError
   attr_accessor :authentication_token
 
   def initialize(authentication_token: nil, **args)
-    self.authentication_token = authentication_token
-
     super **args
   end
 
