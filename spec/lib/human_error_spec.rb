@@ -39,4 +39,10 @@ describe HumanError do
 
     expect(fetched_error.api_version).to eql 'bar'
   end
+
+  it 'can raise an error' do
+    human_error = HumanError.new
+
+    expect { human_error.raise('RequestError') }.to raise_error HumanError::Errors::RequestError
+  end
 end

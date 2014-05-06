@@ -15,4 +15,10 @@ class   HumanError
     Object.const_get("HumanError::Errors::#{error_type}").
       new(configuration.to_h.merge(**args))
   end
+
+  def raise(error_type, **args)
+    error = fetch(error_type, **args)
+
+    Kernel.raise error
+  end
 end
