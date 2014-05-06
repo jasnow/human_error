@@ -1,7 +1,7 @@
 require 'human_error/errors/request_error'
 require 'human_error/errors/authentication_error'
 
-module  HumanError
+class   HumanError
 module  Errors
 class   InvalidUsernameOrPasswordError < RequestError
   include AuthenticationError

@@ -3,7 +3,7 @@ require 'human_error/configuration'
 require 'human_error/error_code_directory'
 require 'human_error/knowledgebase_id_directory'
 
-module  HumanError
+class   HumanError
 module  Error
   attr_accessor :api_version,
                 :api_error_documentation_url,

@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/errors/request_error'
 
-module    HumanError
+class     HumanError
 module    Errors
 describe  RequestError do
   it 'can generate error data' do

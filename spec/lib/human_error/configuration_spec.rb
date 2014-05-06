@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/configuration'
 
-module    HumanError
+class     HumanError
 describe  Configuration do
   it 'can set the API version' do
     configuration = Configuration.new

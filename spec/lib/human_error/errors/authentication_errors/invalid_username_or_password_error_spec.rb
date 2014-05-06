@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/errors/authentication_errors/invalid_username_or_password_error'
 
-module    HumanError
+class     HumanError
 module    Errors
 describe  InvalidUsernameOrPasswordError do
   let(:error) { InvalidUsernameOrPasswordError.new }

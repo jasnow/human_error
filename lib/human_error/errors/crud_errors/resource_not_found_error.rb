@@ -1,7 +1,7 @@
 require 'human_error/errors/crud_error'
 require 'human_error/errors/request_error'
 
-module  HumanError
+class   HumanError
 module  Errors
 class   ResourceNotFoundError < RequestError
   include CrudError

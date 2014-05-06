@@ -1,4 +1,4 @@
-module  HumanError
+class   HumanError
 module  Utilities
 class   String
   def self.underscore(other)

@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/errors/crud_errors/resource_not_found_error'
 
-module    HumanError
+class     HumanError
 module    Errors
 describe  ResourceNotFoundError do
   let(:error) { ResourceNotFoundError.new }

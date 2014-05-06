@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/errors/authentication_errors/invalid_token_error'
 
-module    HumanError
+class     HumanError
 module    Errors
 describe  InvalidTokenError do
   let(:error) { InvalidTokenError.new }

@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/errors/authentication_errors/duplicate_authentication_error'
 
-module    HumanError
+class     HumanError
 module    Errors
 describe  DuplicateAuthenticationError do
   let(:error) { DuplicateAuthenticationError.new(provider:         'flibbity',

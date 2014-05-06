@@ -1,7 +1,7 @@
 require 'rspectacular'
 require 'human_error/errors/crud_errors/resource_persistence_error'
 
-module    HumanError
+class     HumanError
 module    Errors
 describe  ResourcePersistenceError do
   let(:error) { ResourcePersistenceError.new }

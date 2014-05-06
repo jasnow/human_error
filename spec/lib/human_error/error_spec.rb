@@ -5,7 +5,7 @@ class CustomError < RuntimeError
   extend HumanError::Error
 end
 
-module    HumanError
+class     HumanError
 describe  Error do
   it 'can wrap an error with another error' do
     original_error = RuntimeError.new('My Runtime Error Message')

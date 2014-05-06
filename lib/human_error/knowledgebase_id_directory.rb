@@ -1,4 +1,4 @@
-module  HumanError
+class   HumanError
 class   KnowledgebaseIdDirectory
   def self.lookup(error_class)
     directory[error_class]

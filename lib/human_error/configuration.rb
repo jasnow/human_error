@@ -1,4 +1,4 @@
-module  HumanError
+class   HumanError
   class Configuration
     attr_accessor :api_version,
                   :api_error_documentation_url,

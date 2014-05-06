@@ -1,4 +1,4 @@
-module  HumanError
+class   HumanError
 module  Errors
 module  AuthenticationError
 end

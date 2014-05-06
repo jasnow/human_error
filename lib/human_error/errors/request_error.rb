@@ -1,7 +1,7 @@
 require 'human_error/error'
 require 'human_error/utilities/string'
 
-module  HumanError
+class   HumanError
 module  Errors
 class   RequestError < RuntimeError
   include HumanError::Error
