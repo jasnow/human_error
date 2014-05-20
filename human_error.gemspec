@@ -29,6 +29,6 @@ Gem::Specification.new do |gem|
   gem.require_paths     = ['lib']
 
   gem.add_development_dependency  'rspec',                        '~> 3.0.beta'
-  gem.add_development_dependency  'rspectacular',                 '~> 0.22'
+  gem.add_development_dependency  'rspectacular',                 '~> 0.37'
   gem.add_development_dependency  'codeclimate-test-reporter',    '~> 0.3.0'
 end
