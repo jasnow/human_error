@@ -9,7 +9,8 @@ module  Error
                 :api_error_documentation_url,
                 :knowledgebase_url,
                 :knowledgebase_article_id,
-                :code
+                :code,
+                :message
 
   def initialize(**args)
     self.api_version                 = configuration.api_version
@@ -42,9 +43,17 @@ module  Error
   end
 
   def wrap(other)
-    wrapped_error = new "#{other.class.name}: #{other.message}"
+    wrapped_error = new message: "#{other.class.name}: #{other.message}"
     wrapped_error.set_backtrace other.backtrace
     wrapped_error
+  end
+
+  def message
+    @message || developer_message
+  end
+
+  def developer_message
+    raise RuntimeError, 'This method must be implemented in a subclass'
   end
 
   private
