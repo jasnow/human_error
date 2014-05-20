@@ -5,6 +5,14 @@ require 'human_error/knowledgebase_id_directory'
 
 class   HumanError
 module  Error
+  module ClassMethods
+    def wrap(other)
+      wrapped_error = new message: "#{other.class.name}: #{other.message}"
+      wrapped_error.set_backtrace other.backtrace
+      wrapped_error
+    end
+  end
+
   attr_accessor :api_version,
                 :api_error_documentation_url,
                 :knowledgebase_url,
@@ -42,18 +50,16 @@ module  Error
     JSON.dump(as_json)
   end
 
-  def wrap(other)
-    wrapped_error = new message: "#{other.class.name}: #{other.message}"
-    wrapped_error.set_backtrace other.backtrace
-    wrapped_error
-  end
-
   def message
     @message || developer_message
   end
 
   def developer_message
     raise RuntimeError, 'This method must be implemented in a subclass'
+  end
+
+  def self.included(base)
+    base.extend ClassMethods
   end
 
   private

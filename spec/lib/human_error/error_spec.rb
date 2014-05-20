@@ -2,7 +2,7 @@ require 'rspectacular'
 require 'human_error/error'
 
 class CustomError < RuntimeError
-  extend HumanError::Error
+  include HumanError::Error
 end
 
 class     HumanError
