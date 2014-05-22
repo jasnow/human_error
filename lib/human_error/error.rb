@@ -54,6 +54,10 @@ module  Error
     @message || developer_message
   end
 
+  def to_s
+    message
+  end
+
   def developer_message
     raise RuntimeError, 'This method must be implemented in a subclass'
   end
