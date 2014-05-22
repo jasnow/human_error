@@ -14,6 +14,7 @@ class   KnowledgebaseIdDirectory
       'HumanError::Errors::ResourcePersistenceError'       => '1234567890',
       'Apill::Errors::InvalidApiRequestError'              => '1234567890',
       'HumanError::Errors::DuplicateAuthenticationError'   => '1234567890',
+      'HumanError::Errors::AssociationError'               => '1234567890',
     }
   end
 end
