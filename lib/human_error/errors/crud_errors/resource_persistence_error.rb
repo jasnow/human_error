@@ -13,10 +13,6 @@ class   ResourcePersistenceError < RequestError
     422
   end
 
-  def knowledgebase_article_id
-    '1234567890'
-  end
-
   def developer_message
     "One or more of the attributes on the #{resource_name} you attempted to #{action} is invalid."
   end
