@@ -6,3 +6,4 @@ require 'human_error/errors/authentication_errors/duplicate_authentication_error
 require 'human_error/errors/crud_error'
 require 'human_error/errors/crud_errors/resource_not_found_error'
 require 'human_error/errors/crud_errors/resource_persistence_error'
+require 'human_error/errors/crud_errors/association_error'
