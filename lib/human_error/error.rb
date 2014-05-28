@@ -51,15 +51,17 @@ module  Error
   end
 
   def message
-    @message || developer_message
+    to_s
   end
 
   def to_s
-    message
+    @message || developer_message
+  rescue NoMethodError
+    super
   end
 
   def developer_message
-    raise RuntimeError, 'This method must be implemented in a subclass'
+    raise NoMethodError, 'This method must be implemented in a subclass'
   end
 
   def self.included(base)
