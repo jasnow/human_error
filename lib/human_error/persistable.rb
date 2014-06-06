@@ -14,7 +14,7 @@ module  Persistable
             end
 
       raise HumanError::Errors::ResourceNotFoundError.new(
-        resource_name:    human_error_resource_name(self),
+        resource_name:    Persistable.human_error_resource_name(self),
         resource_id:      ids)
     end
   end
@@ -28,18 +28,18 @@ module  Persistable
                                          [1..-1]
 
     raise HumanError::Errors::AssociationError.new(
-      resource_name:    human_error_resource_name(self.class),
+      resource_name:    Persistable.human_error_resource_name(self.class),
       association_name: association_name,
       association_id:   association_id,
       attributes:       attributes)
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => e
     raise HumanError::Errors::ResourcePersistenceError.new(
-      resource_name:    human_error_resource_name(self.class),
+      resource_name:    Persistable.human_error_resource_name(self.class),
       attributes:       attributes,
       errors:           errors.full_messages)
   end
 
-  def human_error_resource_name(klass)
+  def self.human_error_resource_name(klass)
     last_part_of_class_name = /::(\w+)\z/
 
     klass.
@@ -48,8 +48,6 @@ module  Persistable
       humanize.
       downcase
   end
-
-  module_function :human_error_resource_name
 
   def self.included(base)
     base.extend ClassMethods
