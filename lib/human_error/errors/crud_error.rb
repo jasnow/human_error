@@ -7,7 +7,7 @@ module  CrudError
 
   def initialize(resource_name: nil, action: nil, resource_id: nil, **args)
     self.resource_name = resource_name
-    self.action        = action
+    self.action        = action || 'persist'
     self.resource_id   = resource_id
 
     super **args
