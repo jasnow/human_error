@@ -7,9 +7,9 @@ module  Persistable
       ids = case e.message
             when /\ACouldn't find .* without an ID\z/
               []
-            when /\ACouldn't find .* with \'.*\'=(\d+)\z/
+            when /\ACouldn't find .* with \'.*\'=(\d+)/
               [$1]
-            when /\ACouldn't find all .* with \'.*\': ((?:\d+(?:, )?)+)\z/
+            when /\ACouldn't find all .* with \'.*\': ((?:\d+(?:, )?)+)/
               $1.split(', ')
             end
 
