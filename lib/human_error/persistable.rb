@@ -7,9 +7,9 @@ module  Persistable
       ids = case e.message
             when /\ACouldn't find .* without an ID\z/
               []
-            when /\ACouldn't find .* with \'.*\'=(\d+)/
+            when /\ACouldn't find .* with \'.*\'=([a-f0-9\-]+)/
               [$1]
-            when /\ACouldn't find all .* with \'.*\': ((?:\d+(?:, )?)+)/
+            when /\ACouldn't find all .* with \'.*\': ((?:[a-f0-9\-]+(?:, )?)+)/
               $1.split(', ')
             end
 
@@ -22,7 +22,7 @@ module  Persistable
   def save!(*args)
     super
   rescue ActiveRecord::InvalidForeignKey => e
-    association_info_pattern = %r{DETAIL:  Key \((.*)_id\)=\((\d+)\)}
+    association_info_pattern = /DETAIL:  Key \((.*)_id\)=\(([a-f0-9\-]+)\)/
     association_name, association_id = e.message.
                                          match(association_info_pattern) \
                                          [1..-1]
