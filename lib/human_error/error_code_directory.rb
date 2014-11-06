@@ -15,6 +15,7 @@ class   ErrorCodeDirectory
       'Apill::Errors::InvalidApiRequestError'              => 1007,
       'HumanError::Errors::DuplicateAuthenticationError'   => 1008,
       'HumanError::Errors::AssociationError'               => 1009,
+      'Apill::Errors::InvalidSubdomainError'               => 1010,
     }
   end
 end

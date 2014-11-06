@@ -15,6 +15,7 @@ class   KnowledgebaseIdDirectory
       'Apill::Errors::InvalidApiRequestError'              => '1234567890',
       'HumanError::Errors::DuplicateAuthenticationError'   => '1234567890',
       'HumanError::Errors::AssociationError'               => '1234567890',
+      'Apill::Errors::InvalidSubdomainError'               => '1234567890',
     }
   end
 end
