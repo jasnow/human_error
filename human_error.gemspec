@@ -1,34 +1,25 @@
-# -*- encoding: utf-8 -*-
+# encoding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'human_error/version'
 
-Gem::Specification.new do |gem|
-  gem.rubygems_version  = '1.3.5'
+Gem::Specification.new do |spec|
+  spec.name          = 'human_error'
+  spec.version       = HumanError::VERSION
+  spec.authors       = ['jfelchner']
+  spec.email         = 'accounts+git@thekompanee.com'
+  spec.summary       = %q{Common Error Extensions and Helpers}
+  spec.description   = %q{}
+  spec.homepage      = 'https://github.com/thekompanee/human_error'
+  spec.license       = 'MIT'
 
-  gem.name              = 'human_error'
-  gem.rubyforge_project = 'human_error'
+  spec.executables   = Dir['{bin}/**/*'].map    {|dir| dir.gsub!(/\Abin\//, '')}.
+                                         reject {|bin| %w{rails rspec rake setup deploy}}
+  spec.files         = Dir['{app,config,db,lib}/**/*'] + %w{Rakefile README.md LICENSE}
+  spec.test_files    = Dir['{test,spec,features}/**/*']
 
-  gem.version           = HumanError::VERSION
-  gem.platform          = Gem::Platform::RUBY
 
-  gem.authors           = %w{jfelchner}
-  gem.email             = 'accounts+git@thekompanee.com'
-  gem.date              = Time.now
-  gem.homepage          = 'https://github.com/thekompanee/human_error'
-
-  gem.summary           = %q{Common Error Extensions and Helpers}
-  gem.description       = %q{}
-
-  gem.rdoc_options      = ['--charset = UTF-8']
-  gem.extra_rdoc_files  = %w{README.md}
-
-  gem.executables       = Dir['{bin}/**/*'].map {|dir| dir.gsub!(/\Abin\//, '')}
-  gem.files             = Dir['{app,config,db,lib}/**/*'] + %w{Rakefile README.md}
-  gem.test_files        = Dir['{test,spec,features}/**/*']
-  gem.require_paths     = ['lib']
-
-  gem.add_development_dependency  'rspec',                        '~> 3.0'
-  gem.add_development_dependency  'rspectacular',                 '~> 0.50'
-  gem.add_development_dependency  'codeclimate-test-reporter',    '~> 0.3.0'
+  spec.add_development_dependency 'rspec', ["~> 3.0"]
+  spec.add_development_dependency 'rspectacular', ["~> 0.50"]
+  spec.add_development_dependency 'codeclimate-test-reporter', ["~> 0.3.0"]
 end
