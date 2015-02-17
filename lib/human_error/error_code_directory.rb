@@ -4,8 +4,6 @@ class   ErrorCodeDirectory
     directory[error_class]
   end
 
-  private
-
   def self.directory
     {
       'HumanError::Errors::InvalidTokenError'              => 1003,

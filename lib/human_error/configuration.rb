@@ -6,9 +6,9 @@ class   HumanError
 
     def to_h
       {
-        knowledgebase_url:            knowledgebase_url,
-        api_error_documentation_url:  api_error_documentation_url,
-        api_version:                  api_version,
+        knowledgebase_url:           knowledgebase_url,
+        api_error_documentation_url: api_error_documentation_url,
+        api_version:                 api_version,
       }
     end
   end

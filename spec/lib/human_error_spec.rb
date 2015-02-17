@@ -9,7 +9,7 @@ describe HumanError do
   it 'can configure each instance' do
     human_error = HumanError.new do |config|
                     config.api_version = 'foo'
-                  end
+    end
 
     expect(human_error.configuration.api_version).to eql 'foo'
   end
@@ -30,7 +30,9 @@ describe HumanError do
     expect(fetched_error.api_version).to eql 'foo'
   end
 
-  it 'can override values in the global configuration with values in the local configuration when looking up an error' do
+  it 'can override values in the global configuration with values in the local' \
+     'configuration when looking up an error' do
+
     HumanError.configure do |config|
       config.api_version = 'bar'
     end
@@ -44,7 +46,9 @@ describe HumanError do
     expect(fetched_error.api_version).to eql 'foo'
   end
 
-  it 'can override values in the local configuration with explicit values passed when looking up an error' do
+  it 'can override values in the local configuration with explicit values passed when' \
+     'looking up an error' do
+
     human_error = HumanError.new do |config|
       config.api_version = 'foo'
     end
@@ -57,6 +61,7 @@ describe HumanError do
   it 'can raise an error' do
     human_error = HumanError.new
 
-    expect { human_error.raise('RequestError') }.to raise_error HumanError::Errors::RequestError
+    expect { human_error.raise('RequestError') }.to \
+      raise_error HumanError::Errors::RequestError
   end
 end

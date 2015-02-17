@@ -14,7 +14,8 @@ class   ResourcePersistenceError < RequestError
   end
 
   def developer_message
-    "One or more of the attributes on the #{resource_name} you attempted to #{action} is invalid."
+    "One or more of the attributes on the #{resource_name} you attempted " \
+    "to #{action} is invalid."
   end
 
   def developer_details

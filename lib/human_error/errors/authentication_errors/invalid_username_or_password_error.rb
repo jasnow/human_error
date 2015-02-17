@@ -13,11 +13,12 @@ class   InvalidUsernameOrPasswordError < RequestError
   end
 
   def developer_message
-    'Either the username or password passed in or this request is invalid.  Please double-check and try again.'
+    'Either the username or password passed in or this request is invalid.  Please ' \
+    'double-check and try again.'
   end
 
   def developer_details
-    { :username => username, :password => '[FILTERED]' }
+    { username: username, password: '[FILTERED]' }
   end
 
   def friendly_message

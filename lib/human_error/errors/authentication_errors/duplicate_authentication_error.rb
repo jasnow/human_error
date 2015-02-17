@@ -15,14 +15,16 @@ class   DuplicateAuthenticationError < RequestError
   end
 
   def developer_message
-    'The authentication you attempted to register has already been registered by another user. We do not currently support allowing multiple users to be connected to the same authentication.'
+    'The authentication you attempted to register has already been registered by ' \
+    'another user. We do not currently support allowing multiple users to be connected ' \
+    'to the same authentication.'
   end
 
   def developer_details
     {
-      'provider'          => provider,
-      'provider_user_id'  => provider_user_id,
-      'user_id'           => user_id,
+      'provider'         => provider,
+      'provider_user_id' => provider_user_id,
+      'user_id'          => user_id,
     }
   end
 

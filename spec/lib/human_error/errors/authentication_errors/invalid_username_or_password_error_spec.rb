@@ -19,17 +19,20 @@ describe  InvalidUsernameOrPasswordError do
   end
 
   it 'can output the developer message' do
-    expect(error.developer_message).to eql 'Either the username or password passed in or this request is invalid.  Please double-check and try again.'
+    expect(error.developer_message).to eql 'Either the username or password passed in ' \
+                                           'or this request is invalid.  Please ' \
+                                           'double-check and try again.'
   end
 
   it 'can output the developer details' do
     error = InvalidUsernameOrPasswordError.new username: 'neo'
 
-    expect(error.developer_details).to eql(:username => 'neo', :password => '[FILTERED]')
+    expect(error.developer_details).to eql(username: 'neo', password: '[FILTERED]')
   end
 
   it 'can output the friendly message' do
-    expect(error.friendly_message).to eql 'Either your email or password is incorrect.  Please double-check and try again.'
+    expect(error.friendly_message).to eql 'Either your email or password is ' \
+                                          'incorrect.  Please double-check and try again.'
   end
 end
 end

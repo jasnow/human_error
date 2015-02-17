@@ -22,12 +22,14 @@ describe  ResourcePersistenceError do
     error = ResourcePersistenceError.new resource_name: 'black leather trenchcoat',
                                          action:        'bullet time'
 
-    expect(error.developer_message).to eql "One or more of the attributes on the black leather trenchcoat you attempted to bullet time is invalid."
+    expect(error.developer_message).to eql 'One or more of the attributes on the black ' \
+                                           'leather trenchcoat you attempted to bullet ' \
+                                           'time is invalid.'
   end
 
   it 'includes the resource name and action in the developer details' do
-    error = ResourcePersistenceError.new errors:      'lots of errors',
-                                         attributes:  'what is the matrix'
+    error = ResourcePersistenceError.new errors:     'lots of errors',
+                                         attributes: 'what is the matrix'
 
     expect(error.developer_details).to eql('errors'     => 'lots of errors',
                                            'attributes' => 'what is the matrix')
@@ -37,7 +39,8 @@ describe  ResourcePersistenceError do
     error = ResourcePersistenceError.new resource_name: 'black leather trenchcoat',
                                          action:        'bullet time'
 
-    expect(error.friendly_message).to eql "Sorry! We had a problem when tried to bullet time that black leather trenchcoat."
+    expect(error.friendly_message).to eql 'Sorry! We had a problem when tried to ' \
+                                          'bullet time that black leather trenchcoat.'
   end
 end
 end

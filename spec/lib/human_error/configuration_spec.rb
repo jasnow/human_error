@@ -33,7 +33,7 @@ describe  Configuration do
     expect(configuration.to_h).to eql(
       knowledgebase_url:           'knowledgebase_url',
       api_error_documentation_url: 'api_error_documentation_url',
-      api_version:                 'api_version',)
+      api_version:                 'api_version')
   end
 end
 end

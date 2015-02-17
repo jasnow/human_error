@@ -15,18 +15,20 @@ class   AssociationError < RequestError
   end
 
   def developer_message
-    "The #{association_name} that you attempted to associate with the #{resource_name} was not valid."
+    "The #{association_name} that you attempted to associate with " \
+    "the #{resource_name} was not valid."
   end
 
   def developer_details
     {
       resource_name            => attributes,
-      "#{association_name} id" => association_id
+      "#{association_name} id" => association_id,
     }
   end
 
   def friendly_message
-    "Sorry! There was a problem when we tried to set the #{association_name} on that #{resource_name}."
+    "Sorry! There was a problem when we tried to set the #{association_name} on " \
+    "that #{resource_name}."
   end
 end
 end

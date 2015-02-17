@@ -3,25 +3,25 @@ module  Persistable
   module ClassMethods
     def find(*ids)
       super
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound
       ids = case e.message
             when /\ACouldn't find .* without an ID\z/
               []
             when /\ACouldn't find .* with \'.*\'=([a-f0-9\-]+)/
-              [$1]
+              [Regexp.last_match(1)]
             when /\ACouldn't find all .* with \'.*\': ((?:[a-f0-9\-]+(?:, )?)+)/
-              $1.split(', ')
+              Regexp.last_match(1).split(', ')
             end
 
       raise HumanError::Errors::ResourceNotFoundError.new(
-        resource_name:    Persistable.human_error_resource_name(self),
-        resource_id:      ids)
+        resource_name: Persistable.human_error_resource_name(self),
+        resource_id:   ids)
     end
   end
 
   def save!(*args)
     super
-  rescue ActiveRecord::InvalidForeignKey => e
+  rescue ActiveRecord::InvalidForeignKey
     association_info_pattern = /DETAIL:  Key \((.*)_id\)=\(([a-f0-9\-]+)\)/
     association_name, association_id = e.message.
                                          match(association_info_pattern) \
@@ -32,11 +32,11 @@ module  Persistable
       association_name: association_name,
       association_id:   association_id,
       attributes:       attributes)
-  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => e
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved
     raise HumanError::Errors::ResourcePersistenceError.new(
-      resource_name:    Persistable.human_error_resource_name(self.class),
-      attributes:       attributes,
-      errors:           errors.full_messages)
+      resource_name: Persistable.human_error_resource_name(self.class),
+      attributes:    attributes,
+      errors:        errors.full_messages)
   end
 
   def self.human_error_resource_name(klass)

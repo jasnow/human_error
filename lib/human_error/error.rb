@@ -26,7 +26,7 @@ module  Error
     self.knowledgebase_url           = configuration.knowledgebase_url
 
     args.each do |variable, value|
-      self.send("#{variable}=", value)
+      send("#{variable}=", value)
     end
   end
 
@@ -46,7 +46,7 @@ module  Error
     "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end
 
-  def to_json(options = {})
+  def to_json(_options = {})
     JSON.dump(as_json)
   end
 
@@ -61,7 +61,7 @@ module  Error
   end
 
   def developer_message
-    raise NoMethodError, 'This method must be implemented in a subclass'
+    fail NoMethodError, 'This method must be implemented in a subclass'
   end
 
   def self.included(base)

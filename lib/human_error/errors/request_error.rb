@@ -11,7 +11,7 @@ class   RequestError < RuntimeError
                 :developer_details,
                 :friendly_message
 
-  def as_json(options = {})
+  def as_json(_options = {})
     {
       error: {
         status:                      http_status,
@@ -23,7 +23,7 @@ class   RequestError < RuntimeError
         developer_details:           developer_details,
         friendly_message_key:        friendly_message_key,
         friendly_message:            friendly_message,
-      }
+      },
     }
   end
 

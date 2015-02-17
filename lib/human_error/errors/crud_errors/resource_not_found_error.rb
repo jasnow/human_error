@@ -11,7 +11,8 @@ class   ResourceNotFoundError < RequestError
   end
 
   def developer_message
-    "The #{resource_name} you attempted to #{action} for this request is either not authorized for the authenticated user or does not exist."
+    "The #{resource_name} you attempted to #{action} for this request is either " \
+    'not authorized for the authenticated user or does not exist.'
   end
 
   def developer_details

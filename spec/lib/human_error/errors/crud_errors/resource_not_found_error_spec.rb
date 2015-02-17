@@ -22,28 +22,32 @@ describe  ResourceNotFoundError do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       action:        'bullet time'
 
-    expect(error.developer_message).to eql "The black leather trenchcoat you attempted to bullet time for this request is either not authorized for the authenticated user or does not exist."
+    expect(error.developer_message).to eql 'The black leather trenchcoat you attempted ' \
+                                           'to bullet time for this request is either ' \
+                                           'not authorized for the authenticated user ' \
+                                           'or does not exist.'
   end
 
   it 'includes the resource name and action in the developer details' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   123
 
-    expect(error.developer_details).to eql("black_leather_trenchcoat_id" => 123)
+    expect(error.developer_details).to eql('black_leather_trenchcoat_id' => 123)
   end
 
   it 'can accept an array of IDs' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   %w{123 456}
 
-    expect(error.developer_details).to eql("black_leather_trenchcoat_id" => %w{123 456})
+    expect(error.developer_details).to eql('black_leather_trenchcoat_id' => %w{123 456})
   end
 
   it 'includes the resource name and action in the friendly message' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       action:        'bullet time'
 
-    expect(error.friendly_message).to eql "Sorry! The black leather trenchcoat you tried to bullet time does not exist."
+    expect(error.friendly_message).to eql 'Sorry! The black leather trenchcoat you ' \
+                                          'tried to bullet time does not exist.'
   end
 end
 end

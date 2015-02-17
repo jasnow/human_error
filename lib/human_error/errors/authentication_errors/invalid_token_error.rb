@@ -13,7 +13,8 @@ class   InvalidTokenError < RequestError
   end
 
   def developer_message
-    'The token you attempted to use for this request is invalid for this resource.  Please double-check and try again.'
+    'The token you attempted to use for this request is invalid for this resource.  ' \
+    'Please double-check and try again.'
   end
 
   def developer_details

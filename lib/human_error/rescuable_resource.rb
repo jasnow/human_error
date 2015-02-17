@@ -5,7 +5,8 @@ require 'human_error/errors/crud_errors/association_error'
 class   HumanError
 module  RescuableResource
   module ClassMethods
-    def rescue_resource(resource_name, from:, via:)
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
+    def rescue_resource(_resource_name, from:, via:)
       lookup_library = via
 
       if from.include? 'persistence'
@@ -51,6 +52,7 @@ module  RescuableResource
         end
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
   end
 
   def self.included(base)

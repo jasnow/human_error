@@ -22,7 +22,9 @@ describe  AssociationError do
     error = AssociationError.new association_name: 'black leather trenchcoat',
                                  resource_name:    'Neo'
 
-    expect(error.developer_message).to eql "The black leather trenchcoat that you attempted to associate with the Neo was not valid."
+    expect(error.developer_message).to eql 'The black leather trenchcoat that you ' \
+                                           'attempted to associate with the Neo was ' \
+                                           'not valid.'
   end
 
   it 'includes the resource name and action in the developer details' do
@@ -41,7 +43,8 @@ describe  AssociationError do
     error = AssociationError.new association_name: 'black leather trenchcoat',
                                  resource_name:    'Neo'
 
-    expect(error.friendly_message).to eql "Sorry! There was a problem when we tried to set the black leather trenchcoat on that Neo."
+    expect(error.friendly_message).to eql 'Sorry! There was a problem when we tried to ' \
+                                          'set the black leather trenchcoat on that Neo.'
   end
 end
 end

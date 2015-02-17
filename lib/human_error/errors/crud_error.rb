@@ -10,7 +10,7 @@ module  CrudError
     self.action        = action || 'persist'
     self.resource_id   = resource_id
 
-    super **args
+    super(**args)
   end
 
   private
