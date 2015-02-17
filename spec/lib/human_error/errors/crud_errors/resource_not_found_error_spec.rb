@@ -29,14 +29,14 @@ describe  ResourceNotFoundError do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   123
 
-    expect(error.developer_details).to eql("black leather trenchcoat_id" => 123)
+    expect(error.developer_details).to eql("black_leather_trenchcoat_id" => 123)
   end
 
   it 'can accept an array of IDs' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   %w{123 456}
 
-    expect(error.developer_details).to eql("black leather trenchcoat_id" => %w{123 456})
+    expect(error.developer_details).to eql("black_leather_trenchcoat_id" => %w{123 456})
   end
 
   it 'includes the resource name and action in the friendly message' do

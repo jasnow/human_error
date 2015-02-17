@@ -15,7 +15,7 @@ class   ResourceNotFoundError < RequestError
   end
 
   def developer_details
-    { "#{resource_name}_id" => resource_id }
+    { "#{resource_name_underscored}_id" => resource_id }
   end
 
   def friendly_message

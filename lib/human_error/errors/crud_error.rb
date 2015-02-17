@@ -12,6 +12,12 @@ module  CrudError
 
     super **args
   end
+
+  private
+
+  def resource_name_underscored
+    @resource_name_underscored ||= resource_name.gsub(/\s/, '_')
+  end
 end
 end
 end
