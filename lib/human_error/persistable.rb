@@ -21,7 +21,7 @@ module  Persistable
 
   def save!(*args)
     super
-  rescue ActiveRecord::InvalidForeignKey
+  rescue ActiveRecord::InvalidForeignKey => e
     association_info_pattern = /DETAIL:  Key \((.*)_id\)=\(([a-f0-9\-]+)\)/
     association_name, association_id = e.message.
                                          match(association_info_pattern) \
