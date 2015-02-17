@@ -3,7 +3,7 @@ module  Persistable
   module ClassMethods
     def find(*ids)
       super
-    rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound => e
       ids = case e.message
             when /\ACouldn't find .* without an ID\z/
               []
