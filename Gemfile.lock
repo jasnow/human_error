@@ -6,6 +6,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    chamber (2.8.0)
+      hashie (~> 3.3)
+      thor (~> 0.19.1)
     codeclimate-test-reporter (0.3.0)
       simplecov (>= 0.7.1, < 1.0.0)
     diff-lcs (1.2.5)
@@ -13,6 +16,7 @@ GEM
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
+    hashie (3.4.0)
     multi_json (1.10.1)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -35,11 +39,13 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    thor (0.19.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  chamber
   codeclimate-test-reporter (~> 0.3.0)
   human_error!
   rspec (~> 3.0)
