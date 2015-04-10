@@ -4,17 +4,22 @@ require 'human_error/errors/crud_errors/association_error'
 class     HumanError
 module    Errors
 describe  AssociationError do
-  let(:error) { AssociationError.new }
 
   it 'has a status of 422' do
+    error = AssociationError.new
+
     expect(error.http_status).to eql 422
   end
 
   it 'has a code of 1009' do
+    error = AssociationError.new
+
     expect(error.code).to eql 1009
   end
 
   it 'has a knowledgebase article ID of 1234567890' do
+    error = AssociationError.new
+
     expect(error.knowledgebase_article_id).to eql '1234567890'
   end
 
