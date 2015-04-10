@@ -1,5 +1,24 @@
 require 'rspectacular'
 require 'human_error/errors/crud_errors/resource_persistence_error'
+require 'active_support'
+require 'active_model'
+require 'active_record/errors'
+require 'active_record/validations'
+
+class HumanErrorTestModel
+  include ActiveModel::Model
+  include ActiveModel::AttributeMethods
+
+  attr_accessor :some_attribute
+
+  validates_presence_of :some_attribute
+
+  def attributes
+    {
+      'some_attribute' => @some_attribute,
+    }
+  end
+end
 
 class     HumanError
 module    Errors
@@ -45,6 +64,28 @@ describe  ResourcePersistenceError do
 
     expect(error.friendly_message).to eql 'Sorry! We had a problem when tried to ' \
                                           'bullet time that black leather trenchcoat.'
+  end
+
+  it 'can convert an "ActiveRecord::RecordNotSaved"' do
+    record                     = HumanErrorTestModel.new
+    record.valid?
+    resource_persistence_error = ActiveRecord::RecordNotSaved.new('message', record)
+    error                      = ResourcePersistenceError.
+                                   convert(resource_persistence_error)
+
+    expect(error.attributes).to eql('some_attribute' => nil)
+    expect(error.errors).to     eql ["Some attribute can't be blank"]
+  end
+
+  it 'can convert an "ActiveRecord::RecordInvalid"' do
+    record                     = HumanErrorTestModel.new
+    record.valid?
+    resource_persistence_error = ActiveRecord::RecordInvalid.new(record)
+    error                      = ResourcePersistenceError.
+                                   convert(resource_persistence_error)
+
+    expect(error.attributes).to eql('some_attribute' => nil)
+    expect(error.errors).to     eql ["Some attribute can't be blank"]
   end
 end
 end
