@@ -11,7 +11,7 @@ class   HumanError
     yield configuration if block_given?
   end
 
-  def fetch(error_type, **args)
+  def fetch(error_type, **_args)
     Object.const_get("HumanError::Errors::#{error_type}")
   end
 

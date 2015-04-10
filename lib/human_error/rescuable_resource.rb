@@ -13,7 +13,6 @@ module  RescuableResource
       if from.include? 'persistence'
         rescue_from 'ActiveRecord::RecordInvalid',
                     'ActiveRecord::RecordNotSaved' do |exception|
-
           human_error = lookup_library.convert(exception,
                                                resource_name: resource_class_name,
                                                action:        action_name)
