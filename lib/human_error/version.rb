@@ -1,3 +1,3 @@
 class HumanError
-  VERSION = '1.13.4'
+  VERSION = '2.0.0beta1'
 end
