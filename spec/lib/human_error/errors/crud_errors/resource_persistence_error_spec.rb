@@ -4,17 +4,21 @@ require 'human_error/errors/crud_errors/resource_persistence_error'
 class     HumanError
 module    Errors
 describe  ResourcePersistenceError do
-  let(:error) { ResourcePersistenceError.new }
-
   it 'has a status of 422' do
+    error = ResourcePersistenceError.new
+
     expect(error.http_status).to eql 422
   end
 
   it 'has a code of 1006' do
+    error = ResourcePersistenceError.new
+
     expect(error.code).to eql 1006
   end
 
   it 'has a knowledgebase article ID of 1234567890' do
+    error = ResourcePersistenceError.new
+
     expect(error.knowledgebase_article_id).to eql '1234567890'
   end
 
