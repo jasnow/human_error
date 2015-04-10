@@ -6,49 +6,42 @@ class   HumanError
 module  RescuableResource
   module ClassMethods
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
-    def rescue_resource(_resource_name, from:, via:)
-      lookup_library = via
+    def rescue_resource(resource_name, from:, via:)
+      resource_class_name = resource_name.classify
+      lookup_library      = via
 
       if from.include? 'persistence'
-        rescue_from HumanError::Errors::ResourcePersistenceError do |e|
-          error = lookup_library.fetch(
-                  'ResourcePersistenceError',
-                  resource_name: e.resource_name,
-                  attributes:    e.attributes,
-                  errors:        e.errors,
-                  action:        action_name)
+        rescue_from 'ActiveRecord::RecordInvalid',
+                    'ActiveRecord::RecordNotSaved' do |exception|
 
-          render json:   error,
-                 status: error.http_status
+          human_error = lookup_library.convert(exception,
+                                               resource_name: resource_class_name,
+                                               action:        action_name)
+
+          render json:   human_error,
+                 status: human_error.http_status
         end
       end
 
       if from.include? 'not_found'
-        rescue_from HumanError::Errors::ResourceNotFoundError do |e|
-          resource_id = e.resource_id.is_a?(Array) ? e.resource_id : [e.resource_id]
+        rescue_from 'ActiveRecord::RecordNotFound' do |exception|
+          human_error = lookup_library.convert(exception,
+                                               resource_name: resource_class_name,
+                                               action:        action_name)
 
-          error = lookup_library.fetch(
-                  'ResourceNotFoundError',
-                  resource_name: e.resource_name,
-                  resource_id:   resource_id,
-                  action:        action_name)
-
-          render json:   error,
-                 status: error.http_status
+          render json:   human_error,
+                 status: human_error.http_status
         end
       end
 
       if from.include? 'association'
-        rescue_from HumanError::Errors::AssociationError do |e|
-          error = lookup_library.fetch(
-                  'AssociationError',
-                  resource_name:    e.resource_name,
-                  association_name: e.association_name,
-                  association_id:   e.association_id,
-                  attributes:       e.attributes)
+        rescue_from 'ActiveRecord::InvalidForeignKey' do |exception|
+          human_error = lookup_library.convert(exception,
+                                               resource_name: resource_class_name,
+                                               action:        action_name)
 
-          render json:   error,
-                 status: error.http_status
+          render json:   human_error,
+                 status: human_error.http_status
         end
       end
     end

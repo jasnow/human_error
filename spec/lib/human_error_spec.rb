@@ -1,7 +1,12 @@
 require 'rspectacular'
 require 'human_error'
+require 'active_record/errors'
 
 describe HumanError do
+  let(:original_error) do
+    ActiveRecord::RecordNotFound.new("Couldn't find resource with 'id'=3")
+  end
+
   it 'can create an instance of HumanError' do
     expect(HumanError.new).to be_a HumanError
   end
@@ -17,7 +22,7 @@ describe HumanError do
   it 'can lookup errors' do
     human_error = HumanError.new
 
-    expect(human_error.fetch('RequestError')).to be_a HumanError::Errors::RequestError
+    expect(human_error.fetch('RequestError')).to eql HumanError::Errors::RequestError
   end
 
   it 'can lookup errors based on the local configuration' do
@@ -25,7 +30,7 @@ describe HumanError do
       config.api_version = 'foo'
     end
 
-    fetched_error = human_error.fetch('RequestError')
+    fetched_error = human_error.convert(original_error)
 
     expect(fetched_error.api_version).to eql 'foo'
   end
@@ -41,7 +46,7 @@ describe HumanError do
       config.api_version = 'foo'
     end
 
-    fetched_error = human_error.fetch('RequestError')
+    fetched_error = human_error.convert(original_error)
 
     expect(fetched_error.api_version).to eql 'foo'
   end
@@ -53,7 +58,7 @@ describe HumanError do
       config.api_version = 'foo'
     end
 
-    fetched_error = human_error.fetch('RequestError', api_version: 'bar')
+    fetched_error = human_error.convert(original_error, api_version: 'bar')
 
     expect(fetched_error.api_version).to eql 'bar'
   end

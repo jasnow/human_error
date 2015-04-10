@@ -12,8 +12,18 @@ class   HumanError
   end
 
   def fetch(error_type, **args)
-    Object.const_get("HumanError::Errors::#{error_type}").
-      new(configuration.to_h.merge(**args))
+    Object.const_get("HumanError::Errors::#{error_type}")
+  end
+
+  def convert(original_error, overrides = {})
+    overrides = configuration.to_h.merge(overrides)
+
+    case original_error.class.name
+    when 'ActiveRecord::InvalidForeignKey'
+      fetch('AssociationError').convert(original_error, overrides)
+    when 'ActiveRecord::RecordNotFound'
+      fetch('ResourceNotFoundError').convert(original_error, overrides)
+    end
   end
 
   def raise(error_type, **args)
