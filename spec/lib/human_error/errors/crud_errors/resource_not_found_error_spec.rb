@@ -4,17 +4,21 @@ require 'human_error/errors/crud_errors/resource_not_found_error'
 class     HumanError
 module    Errors
 describe  ResourceNotFoundError do
-  let(:error) { ResourceNotFoundError.new }
-
   it 'has a status of 404' do
+    error = ResourceNotFoundError.new
+
     expect(error.http_status).to eql 404
   end
 
   it 'has a code of 1005' do
+    error = ResourceNotFoundError.new
+
     expect(error.code).to eql 1005
   end
 
   it 'has a knowledgebase article ID of 1234567890' do
+    error = ResourceNotFoundError.new
+
     expect(error.knowledgebase_article_id).to eql '1234567890'
   end
 
