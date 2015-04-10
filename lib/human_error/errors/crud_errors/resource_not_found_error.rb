@@ -6,6 +6,26 @@ module  Errors
 class   ResourceNotFoundError < RequestError
   include CrudError
 
+  def self.convert(original_error, overrides = {})
+    initialization_parameters = {}
+
+    case original_error.class.name
+    when 'ActiveRecord::RecordNotFound'
+      initialization_parameters = {
+        resource_id: case original_error.message
+                     when /\ACouldn't find .* without an ID\z/
+                       []
+                     when /\ACouldn't find .* with \'.*\'=([a-f0-9\-]+)/
+                       [Regexp.last_match(1)]
+                     when /\ACouldn't find all .* with \'.*\': ((?:[a-f0-9\-]+(?:, )?)+)/
+                       Array(Regexp.last_match(1).split(', '))
+                     end,
+      }
+    end
+
+    new(initialization_parameters.merge(overrides))
+  end
+
   def http_status
     404
   end
