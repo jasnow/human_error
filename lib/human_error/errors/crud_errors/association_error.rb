@@ -10,6 +10,25 @@ class   AssociationError < RequestError
                 :association_id,
                 :attributes
 
+  def self.convert(original_error, overrides = {})
+    initialization_parameters = {}
+
+    case original_error.class.name
+    when 'ActiveRecord::InvalidForeignKey'
+      message_info_pattern = /DETAIL:  Key \((.*)_id\)=\(([a-f0-9\-]+)\)/
+      message_info         = original_error.
+                               message.
+                               match(message_info_pattern)[1..-1]
+
+      initialization_parameters = {
+        association_name: message_info[0],
+        association_id:   message_info[1],
+      }
+    end
+
+    new(initialization_parameters.merge(overrides))
+  end
+
   def http_status
     422
   end
