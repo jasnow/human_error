@@ -38,8 +38,6 @@ class   HumanError
   end
 
   def raise(error_type, **args)
-    error = build(error_type, **args)
-
-    Kernel.raise error
+    Kernel.raise build(error_type, **args)
   end
 end
