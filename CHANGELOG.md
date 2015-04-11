@@ -1,9 +1,25 @@
 Version v2.0.0 - April 10, 2015
 ================================================================================
 
+Removed
+--------------------------------------------------------------------------------
+  * No longer needed require statement
+  * HumanError::Persistable
+
 Changed
 --------------------------------------------------------------------------------
+  * VerifiableModel to pass the action name
+  * VerifiableModel to always return an ID array
+  * VerifiableModel to allow the lookup library to be passed in
+  * RescuableResource to always rescue HumanErrors
   * HumanError#raise to use build instead of fetch
+
+Fixed
+--------------------------------------------------------------------------------
+  * HumanError is a class not a module
+  * Requiring VerifiableModel
+  * Resource name sent to errors
+  * raise to use the new version of fetch
 
 Added
 --------------------------------------------------------------------------------
@@ -13,14 +29,6 @@ Added
   * ResourcePersistenceError.convert
   * ResourceNotFoundError.convert
   * AssociationError.convert
-
-Fixed
---------------------------------------------------------------------------------
-  * raise to use the new version of fetch
-
-Removed
---------------------------------------------------------------------------------
-  * HumanError::Persistable
 
 Version v1.13.4 - March 26, 2015
 ================================================================================
