@@ -15,6 +15,12 @@ class   HumanError
     Object.const_get("HumanError::Errors::#{error_type}")
   end
 
+  def build(error_type, overrides = {})
+    overrides = configuration.to_h.merge(overrides)
+
+    fetch(error_type).new(overrides)
+  end
+
   def convert(original_error, overrides = {})
     overrides = configuration.to_h.merge(overrides)
 
