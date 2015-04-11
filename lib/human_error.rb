@@ -29,6 +29,9 @@ class   HumanError
       fetch('AssociationError').convert(original_error, overrides)
     when 'ActiveRecord::RecordNotFound'
       fetch('ResourceNotFoundError').convert(original_error, overrides)
+    when 'ActiveRecord::RecordInvalid',
+         'ActiveRecord::RecordNotSaved'
+      fetch('ResourcePersistenceError').convert(original_error, overrides)
     end
   end
 
