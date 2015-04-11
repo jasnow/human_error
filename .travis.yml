@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+- 2.2.1
+before_install: gem update bundler
+before_script: gem install rubocop
+script: bundle exec rspec && rubocop -D
+notifications:
+  email:
+    recipients:
+    - jasnow@hotmail.com
+    on_success: change
+    on_failure: always
