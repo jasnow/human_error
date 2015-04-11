@@ -1,5 +1,3 @@
-require 'human_error/errors/crud_errors/resource_not_found_error'
-
 class   HumanError
 module  VerifiableModel
   module ClassMethods
