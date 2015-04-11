@@ -16,7 +16,7 @@ module  VerifiableModel
         resource_not_found_error = lookup_library.build(
           'ResourceNotFoundError',
           resource_name: model_name,
-          resource_id:   params[:id],
+          resource_id:   [params[:id]],
         )
 
         fail resource_not_found_error unless model.persisted?
