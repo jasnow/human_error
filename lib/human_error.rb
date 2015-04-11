@@ -36,7 +36,7 @@ class   HumanError
   end
 
   def raise(error_type, **args)
-    error = fetch(error_type).new(**args)
+    error = build(error_type, **args)
 
     Kernel.raise error
   end
