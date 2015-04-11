@@ -6,7 +6,7 @@ module  VerifiableModel
     def verify_model_exists(model_name = nil, options = {}, via: HumanError.new)
       exceptions     = options[:except] || %i{create index}
       lookup_library = via
-      model_name   ||= name[/::(\w+)Controller\z/, 1].
+      model_name ||= name[/::(\w+)Controller\z/, 1].
                          singularize.
                          downcase
 
