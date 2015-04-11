@@ -17,6 +17,7 @@ module  VerifiableModel
           'ResourceNotFoundError',
           resource_name: model_name,
           resource_id:   [params[:id]],
+          action:        action_name,
         )
 
         fail resource_not_found_error unless model.persisted?
