@@ -1,6 +1,6 @@
 require 'human_error/errors/crud_errors/resource_not_found_error'
 
-module  HumanError
+class   HumanError
 module  VerifiableModel
   module ClassMethods
       exceptions     = options[:except] || %i{create index}
