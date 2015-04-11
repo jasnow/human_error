@@ -7,14 +7,14 @@ module  RescuableResource
   module ClassMethods
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
     def rescue_resource(resource_name, from:, via:)
-      resource_class_name = resource_name.classify
-      lookup_library      = via
+      nice_resource_name = resource_name.humanize.downcase
+      lookup_library     = via
 
       if from.include? 'persistence'
         rescue_from 'ActiveRecord::RecordInvalid',
                     'ActiveRecord::RecordNotSaved' do |exception|
           human_error = lookup_library.convert(exception,
-                                               resource_name: resource_class_name,
+                                               resource_name: nice_resource_name,
                                                action:        action_name)
 
           render json:   human_error,
@@ -25,7 +25,7 @@ module  RescuableResource
       if from.include? 'not_found'
         rescue_from 'ActiveRecord::RecordNotFound' do |exception|
           human_error = lookup_library.convert(exception,
-                                               resource_name: resource_class_name,
+                                               resource_name: nice_resource_name,
                                                action:        action_name)
 
           render json:   human_error,
@@ -36,7 +36,7 @@ module  RescuableResource
       if from.include? 'association'
         rescue_from 'ActiveRecord::InvalidForeignKey' do |exception|
           human_error = lookup_library.convert(exception,
-                                               resource_name: resource_class_name,
+                                               resource_name: nice_resource_name,
                                                action:        action_name)
 
           render json:   human_error,
