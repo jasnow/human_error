@@ -43,6 +43,11 @@ module  RescuableResource
                  status: human_error.http_status
         end
       end
+
+      rescue_from 'HumanError::Error' do |exception|
+        render json:   exception,
+               status: exception.http_status
+      end
     end
     # rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
   end
