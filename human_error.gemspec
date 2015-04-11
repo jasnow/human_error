@@ -18,8 +18,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['{app,config,db,lib}/**/*'] + %w{Rakefile README.md LICENSE}
   spec.test_files    = Dir['{test,spec,features}/**/*']
 
-
-  spec.add_development_dependency 'rspec', ["~> 3.0"]
+  spec.add_development_dependency 'rspec',        ["~> 3.0"]
   spec.add_development_dependency 'rspectacular', ["~> 0.50"]
-  spec.add_development_dependency 'codeclimate-test-reporter', ["~> 0.3.0"]
+  spec.add_development_dependency 'activerecord', ["~> 4.1"]
 end

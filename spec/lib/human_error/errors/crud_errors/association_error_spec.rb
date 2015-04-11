@@ -1,20 +1,29 @@
 require 'rspectacular'
 require 'human_error/errors/crud_errors/association_error'
+require 'active_record/errors'
 
 class     HumanError
 module    Errors
 describe  AssociationError do
-  let(:error) { AssociationError.new }
+  let(:foreign_key_error) do
+    ActiveRecord::InvalidForeignKey.new('DETAIL:  Key (resource_id)=(123)')
+  end
 
   it 'has a status of 422' do
+    error = AssociationError.new
+
     expect(error.http_status).to eql 422
   end
 
   it 'has a code of 1009' do
+    error = AssociationError.new
+
     expect(error.code).to eql 1009
   end
 
   it 'has a knowledgebase article ID of 1234567890' do
+    error = AssociationError.new
+
     expect(error.knowledgebase_article_id).to eql '1234567890'
   end
 
@@ -45,6 +54,22 @@ describe  AssociationError do
 
     expect(error.friendly_message).to eql 'Sorry! There was a problem when we tried to ' \
                                           'set the black leather trenchcoat on that Neo.'
+  end
+
+  it 'can convert an "ActiveRecord::InvalidForeignKey"' do
+    error = AssociationError.convert(foreign_key_error)
+
+    expect(error.resource_name).to    eql nil
+    expect(error.association_name).to eql 'resource'
+    expect(error.association_id).to   eql '123'
+  end
+
+  it 'can convert an "ActiveRecord::InvalidForeignKey" while overriding attributes' do
+    error = AssociationError.convert(foreign_key_error, resource_name: 'my_resource')
+
+    expect(error.resource_name).to    eql 'my_resource'
+    expect(error.association_name).to eql 'resource'
+    expect(error.association_id).to   eql '123'
   end
 end
 end
