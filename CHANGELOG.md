@@ -1,16 +1,22 @@
 Version v2.0.0 - April 10, 2015
 ================================================================================
 
-Fixed
+Changed
 --------------------------------------------------------------------------------
-  * raise to use the new version of fetch
+  * HumanError#raise to use build instead of fetch
 
 Added
 --------------------------------------------------------------------------------
+  * RecordInvalid and RecordNotValid to convertable errors
+  * HumanError#build
   * VerifiableModel from Coadjutor
   * ResourcePersistenceError.convert
   * ResourceNotFoundError.convert
   * AssociationError.convert
+
+Fixed
+--------------------------------------------------------------------------------
+  * raise to use the new version of fetch
 
 Removed
 --------------------------------------------------------------------------------
