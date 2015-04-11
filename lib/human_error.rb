@@ -11,7 +11,7 @@ class   HumanError
     yield configuration if block_given?
   end
 
-  def fetch(error_type, **_args)
+  def fetch(error_type)
     Object.const_get("HumanError::Errors::#{error_type}")
   end
 
@@ -27,7 +27,7 @@ class   HumanError
   end
 
   def raise(error_type, **args)
-    error = fetch(error_type, **args)
+    error = fetch(error_type).new(**args)
 
     Kernel.raise error
   end
