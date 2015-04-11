@@ -1,6 +1,8 @@
 require 'human_error/version'
 require 'human_error/error'
 require 'human_error/errors'
+require 'human_error/rescuable_resource'
+require 'human_error/verifiable_model'
 
 class   HumanError
   attr_accessor :configuration

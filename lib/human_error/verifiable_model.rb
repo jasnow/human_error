@@ -1,4 +1,4 @@
-require 'human_error/errors/resource_not_found_error'
+require 'human_error/errors/crud_errors/resource_not_found_error'
 
 module  HumanError
 module  VerifiableModel
