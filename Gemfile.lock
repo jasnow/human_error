@@ -58,8 +58,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 4.1)
+  activerecord
   chamber
   human_error!
-  rspec (~> 3.0)
-  rspectacular (~> 0.50)
+  rspec
+  rspectacular
