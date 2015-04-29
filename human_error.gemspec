@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rspectacular'
   spec.add_development_dependency 'activerecord'
+  spec.add_development_dependency 'overcommit'
 end
