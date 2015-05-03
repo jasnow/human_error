@@ -36,7 +36,7 @@ GEM
     iniparse (1.4.0)
     json (1.8.2)
     minitest (5.6.1)
-    overcommit (0.24.0)
+    overcommit (0.25.0)
       childprocess (~> 0.5.6)
       iniparse (~> 1.4)
     rspec (3.2.0)
