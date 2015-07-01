@@ -27,7 +27,7 @@ GEM
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     diff-lcs (1.2.5)
-    ffi (1.9.9)
+    ffi (1.9.10)
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
