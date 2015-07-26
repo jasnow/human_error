@@ -52,7 +52,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    rspectacular (0.62.1)
+    rspectacular (0.63.0)
       fuubar (~> 2.0)
       rspec (~> 3.1)
     ruby-progressbar (1.7.5)
