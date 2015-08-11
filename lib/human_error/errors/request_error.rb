@@ -17,23 +17,11 @@ class   RequestError < RuntimeError
         code:                        code,
         developer_documentation_uri: developer_documentation_uri,
         customer_support_uri:        customer_support_uri,
-        developer_message_key:       developer_message_key,
         developer_message:           detail,
         developer_details:           source,
-        friendly_message_key:        friendly_message_key,
         friendly_message:            friendly_message,
       },
     }
-  end
-
-  private
-
-  def developer_message_key
-    "#{base_message_key}.developer"
-  end
-
-  def friendly_message_key
-    "#{base_message_key}.friendly"
   end
 end
 end
