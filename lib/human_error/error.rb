@@ -50,6 +50,19 @@ module  Error
     "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end
 
+  def as_json(_options = {})
+    {
+      error: {
+        status:                      http_status,
+        code:                        code,
+        developer_documentation_uri: developer_documentation_uri,
+        customer_support_uri:        customer_support_uri,
+        developer_message:           detail,
+        developer_details:           source,
+      },
+    }
+  end
+
   def to_json(_options = {})
     JSON.dump(as_json)
   end
