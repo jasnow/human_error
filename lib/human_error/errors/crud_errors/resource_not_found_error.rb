@@ -1,9 +1,9 @@
 require 'human_error/errors/crud_error'
-require 'human_error/errors/request_error'
 
 class   HumanError
 module  Errors
-class   ResourceNotFoundError < RequestError
+class   ResourceNotFoundError < RuntimeError
+  include Error
   include CrudError
 
   def self.convert(original_error, overrides = {})
@@ -30,17 +30,17 @@ class   ResourceNotFoundError < RequestError
     404
   end
 
-  def developer_message
+  def title
+    'Resource Not Found'
+  end
+
+  def detail
     "The #{resource_name} you attempted to #{action} for this request is either " \
     'not authorized for the authenticated user or does not exist.'
   end
 
-  def developer_details
+  def source
     { "#{resource_name_underscored}_id" => resource_id }
-  end
-
-  def friendly_message
-    "Sorry! The #{resource_name} you tried to #{action} does not exist."
   end
 
   def action

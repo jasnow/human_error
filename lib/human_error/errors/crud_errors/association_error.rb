@@ -1,9 +1,9 @@
 require 'human_error/errors/crud_error'
-require 'human_error/errors/request_error'
 
 class   HumanError
 module  Errors
-class   AssociationError < RequestError
+class   AssociationError < RuntimeError
+  include Error
   include CrudError
 
   attr_accessor :association_name,
@@ -33,21 +33,20 @@ class   AssociationError < RequestError
     422
   end
 
-  def developer_message
+  def title
+    'Association Error'
+  end
+
+  def detail
     "The #{association_name} that you attempted to associate with " \
     "the #{resource_name} was not valid."
   end
 
-  def developer_details
+  def source
     {
       resource_name            => attributes,
       "#{association_name} id" => association_id,
     }
-  end
-
-  def friendly_message
-    "Sorry! There was a problem when we tried to set the #{association_name} on " \
-    "that #{resource_name}."
   end
 end
 end
