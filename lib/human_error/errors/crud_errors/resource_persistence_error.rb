@@ -1,9 +1,9 @@
 require 'human_error/errors/crud_error'
-require 'human_error/errors/request_error'
 
 class   HumanError
 module  Errors
-class   ResourcePersistenceError < RequestError
+class   ResourcePersistenceError < RuntimeError
+  include Error
   include CrudError
 
   attr_accessor :errors,

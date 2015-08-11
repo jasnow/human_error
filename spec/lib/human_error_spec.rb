@@ -22,7 +22,7 @@ describe HumanError do
   it 'can lookup errors' do
     human_error = HumanError.new
 
-    expect(human_error.fetch('RequestError')).to eql HumanError::Errors::RequestError
+    expect(human_error.fetch('InvalidTokenError')).to eql HumanError::Errors::InvalidTokenError
   end
 
   it 'can lookup errors based on the local configuration' do
@@ -66,7 +66,7 @@ describe HumanError do
   it 'can raise an error' do
     human_error = HumanError.new
 
-    expect { human_error.raise('RequestError') }.to \
-      raise_error HumanError::Errors::RequestError
+    expect { human_error.raise('InvalidTokenError') }.to \
+      raise_error HumanError::Errors::InvalidTokenError
   end
 end

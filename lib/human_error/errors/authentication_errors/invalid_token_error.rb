@@ -1,9 +1,9 @@
-require 'human_error/errors/request_error'
 require 'human_error/errors/authentication_error'
 
 class   HumanError
 module  Errors
-class   InvalidTokenError < RequestError
+class   InvalidTokenError < RuntimeError
+  include Error
   include AuthenticationError
 
   attr_accessor :authentication_token

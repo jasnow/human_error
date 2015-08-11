@@ -1,9 +1,9 @@
 require 'human_error/errors/crud_error'
-require 'human_error/errors/request_error'
 
 class   HumanError
 module  Errors
-class   AssociationError < RequestError
+class   AssociationError < RuntimeError
+  include Error
   include CrudError
 
   attr_accessor :association_name,

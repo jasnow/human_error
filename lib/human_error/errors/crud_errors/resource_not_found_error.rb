@@ -1,9 +1,9 @@
 require 'human_error/errors/crud_error'
-require 'human_error/errors/request_error'
 
 class   HumanError
 module  Errors
-class   ResourceNotFoundError < RequestError
+class   ResourceNotFoundError < RuntimeError
+  include Error
   include CrudError
 
   def self.convert(original_error, overrides = {})
