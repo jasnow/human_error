@@ -89,6 +89,10 @@ module  Error
     @detail ||= 'The server encountered an error.'
   end
 
+  def source
+    @source ||= {}
+  end
+
   def message
     to_s
   end
