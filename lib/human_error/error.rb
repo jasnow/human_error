@@ -14,7 +14,8 @@ module  Error
     end
   end
 
-  attr_accessor :api_version,
+  attr_accessor :id,
+                :api_version,
                 :api_error_documentation_url,
                 :knowledgebase_url,
                 :knowledgebase_article_id,
@@ -54,6 +55,7 @@ module  Error
   def as_json(_options = {})
     {
       error: {
+        id:                          id,
         status:                      http_status,
         code:                        code,
         developer_documentation_uri: developer_documentation_uri,
@@ -67,6 +69,10 @@ module  Error
 
   def to_json(_options = {})
     JSON.dump(as_json)
+  end
+
+  def id
+    @id ||= SecureRandom.uuid
   end
 
   def title

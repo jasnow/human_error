@@ -45,6 +45,7 @@ describe  Error do
 
   it 'can generate error data' do
     custom_error = CustomError.new(
+      id:                          'identifier',
       http_status:                 'flibbity',
       code:                        'jibbit',
       title:                       'roll dem bones and stones',
@@ -57,6 +58,7 @@ describe  Error do
 
     expect(custom_error.as_json).to eql(
       error: {
+        id:                          'identifier',
         status:                      'flibbity',
         code:                        'jibbit',
         title:                       'roll dem bones and stones',
@@ -75,6 +77,7 @@ describe  Error do
     end
 
     custom_error = CustomError.new(
+      id:                          'identifier',
       http_status:              'flibbity',
       code:                     'jibbit',
       title:                    'roll dem bones and stones',
@@ -84,6 +87,7 @@ describe  Error do
 
     expect(custom_error.as_json).to eql(
       error: {
+        id:                          'identifier',
         status:                      'flibbity',
         code:                        'jibbit',
         title:                       'roll dem bones and stones',
@@ -102,6 +106,7 @@ describe  Error do
     end
 
     custom_error = CustomError.new(
+      id:                          'identifier',
       http_status:                 'flibbity',
       code:                        'jibbit',
       title:                       'roll dem bones and stones',
@@ -114,6 +119,7 @@ describe  Error do
 
     expect(custom_error.as_json).to eql(
       error: {
+        id:                          'identifier',
         status:                      'flibbity',
         code:                        'jibbit',
         title:                       'roll dem bones and stones',
