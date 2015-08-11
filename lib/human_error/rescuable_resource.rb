@@ -5,16 +5,28 @@ require 'human_error/errors/crud_errors/association_error'
 class   HumanError
 module  RescuableResource
   module ClassMethods
-    def rescue_resource(resource_name)
-      nice_resource_name = resource_name.humanize.downcase
+    def plural_resource_name
+      name[/(\w+)Controller\z/, 1].
+      underscore.
+      pluralize.
+      downcase
+    end
 
+    def singular_resource_name
+      name[/(\w+)Controller\z/, 1].
+      underscore.
+      singularize.
+      downcase
+    end
+
+    def rescue_resource
       rescue_from 'ActiveRecord::RecordInvalid',
                   'ActiveRecord::RecordNotSaved',
                   'ActiveRecord::RecordNotFound',
                   'ActiveRecord::InvalidForeignKey' do |exception|
 
         human_error = HumanError.new.convert(exception,
-                                              resource_name: nice_resource_name,
+                                              resource_name: singular_resource_name,
                                               action:        action_name)
 
         render json:   human_error,
