@@ -11,7 +11,7 @@ require 'human_error/errors/crud_errors/resource_persistence_error'
 require 'human_error/errors/request_errors/parameter_missing_error'
 require 'human_error/errors/request_errors/unpermitted_parameters_error'
 require 'human_error/rescuable_resource'
-require 'human_error/verifiable_model'
+require 'human_error/verifiable_resource'
 require 'human_error/version'
 
 class   HumanError
