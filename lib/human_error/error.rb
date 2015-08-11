@@ -41,7 +41,7 @@ module  Error
         id:                          id,
         status:                      http_status,
         code:                        code,
-        developer_documentation_uri: developer_documentation_uri,
+        developer_documentation_url: developer_documentation_url,
         customer_support_uri:        customer_support_uri,
         title:                       title,
         developer_message:           detail,
@@ -62,7 +62,7 @@ module  Error
     "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end
 
-  def developer_documentation_uri
+  def developer_documentation_url
     "#{api_error_documentation_url}/#{code}?version=#{api_version}"
   end
 
