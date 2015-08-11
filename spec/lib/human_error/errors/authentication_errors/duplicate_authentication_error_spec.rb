@@ -15,7 +15,7 @@ describe  DuplicateAuthenticationError do
   end
 
   it 'has a code' do
-    expect(error.code).to eql 'errors.duplicate.authentication.error'
+    expect(error.code).to eql 'errors.duplicate_authentication_error'
   end
 
   it 'has a title' do

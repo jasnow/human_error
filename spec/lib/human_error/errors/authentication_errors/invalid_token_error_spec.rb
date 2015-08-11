@@ -11,7 +11,7 @@ describe  InvalidTokenError do
   end
 
   it 'has a code' do
-    expect(error.code).to eql 'errors.invalid.token.error'
+    expect(error.code).to eql 'errors.invalid_token_error'
   end
 
   it 'has a title' do

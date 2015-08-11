@@ -11,7 +11,7 @@ describe  InvalidUsernameOrPasswordError do
   end
 
   it 'has a code' do
-    expect(error.code).to eql 'errors.invalid.username.or.password.error'
+    expect(error.code).to eql 'errors.invalid_username_or_password_error'
   end
 
   it 'has a title' do

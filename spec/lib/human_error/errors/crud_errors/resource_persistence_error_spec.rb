@@ -32,7 +32,7 @@ describe  ResourcePersistenceError do
   it 'has a code' do
     error = ResourcePersistenceError.new
 
-    expect(error.code).to eql 'errors.resource.persistence.error'
+    expect(error.code).to eql 'errors.resource_persistence_error'
   end
 
   it 'has a title' do

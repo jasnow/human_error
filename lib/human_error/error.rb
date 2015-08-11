@@ -84,7 +84,7 @@ module  Error
     @code ||= HumanError::Utilities::String.
                 underscore(self.class.name).
                 gsub(%r{\A[^/]+/}, '').
-                gsub(%r{[_/]}, '.')
+                gsub(%r{/}, '.')
   end
 
   def title

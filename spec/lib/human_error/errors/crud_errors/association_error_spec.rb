@@ -18,7 +18,7 @@ describe  AssociationError do
   it 'has a code' do
     error = AssociationError.new
 
-    expect(error.code).to eql 'errors.association.error'
+    expect(error.code).to eql 'errors.association_error'
   end
 
   it 'has a title' do

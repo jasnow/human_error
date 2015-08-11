@@ -14,7 +14,7 @@ describe  ResourceNotFoundError do
   it 'has a code' do
     error = ResourceNotFoundError.new
 
-    expect(error.code).to eql 'errors.resource.not.found.error'
+    expect(error.code).to eql 'errors.resource_not_found_error'
   end
 
   it 'has a title' do
