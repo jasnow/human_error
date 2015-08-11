@@ -25,7 +25,7 @@ describe  InvalidTokenError do
   end
 
   it 'can output the developer details' do
-    expect(error.developer_details).to eql(token: '[FILTERED]')
+    expect(error.source).to eql(token: '[FILTERED]')
   end
 
   it 'can output the friendly message' do

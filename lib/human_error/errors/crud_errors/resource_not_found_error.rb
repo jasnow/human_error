@@ -35,7 +35,7 @@ class   ResourceNotFoundError < RequestError
     'not authorized for the authenticated user or does not exist.'
   end
 
-  def developer_details
+  def source
     { "#{resource_name_underscored}_id" => resource_id }
   end
 

@@ -31,7 +31,7 @@ describe  DuplicateAuthenticationError do
   end
 
   it 'can output the developer details' do
-    expect(error.developer_details).to eql(
+    expect(error.source).to eql(
               'provider'         => 'flibbity',
               'provider_user_id' => '12345',
               'user_id'          => '54321',

@@ -20,7 +20,7 @@ class   DuplicateAuthenticationError < RequestError
     'to the same authentication.'
   end
 
-  def developer_details
+  def source
     {
       'provider'         => provider,
       'provider_user_id' => provider_user_id,

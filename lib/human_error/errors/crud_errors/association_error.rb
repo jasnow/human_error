@@ -38,7 +38,7 @@ class   AssociationError < RequestError
     "the #{resource_name} was not valid."
   end
 
-  def developer_details
+  def source
     {
       resource_name            => attributes,
       "#{association_name} id" => association_id,

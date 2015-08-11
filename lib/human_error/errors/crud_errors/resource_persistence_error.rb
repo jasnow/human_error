@@ -34,7 +34,7 @@ class   ResourcePersistenceError < RequestError
     "to #{action} is invalid."
   end
 
-  def developer_details
+  def source
     {
       'errors'     => errors,
       'attributes' => attributes,

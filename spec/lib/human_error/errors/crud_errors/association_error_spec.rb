@@ -42,7 +42,7 @@ describe  AssociationError do
                                  attributes:       'what is the matrix',
                                  association_id:   '123'
 
-    expect(error.developer_details).to eql(
+    expect(error.source).to eql(
       'Neo'                         => 'what is the matrix',
       'black leather trenchcoat id' => '123',
     )

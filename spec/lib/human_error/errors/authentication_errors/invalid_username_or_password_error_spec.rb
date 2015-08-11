@@ -27,7 +27,7 @@ describe  InvalidUsernameOrPasswordError do
   it 'can output the developer details' do
     error = InvalidUsernameOrPasswordError.new username: 'neo'
 
-    expect(error.developer_details).to eql(username: 'neo', password: '[FILTERED]')
+    expect(error.source).to eql(username: 'neo', password: '[FILTERED]')
   end
 
   it 'can output the friendly message' do

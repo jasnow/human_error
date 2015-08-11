@@ -54,8 +54,8 @@ describe  ResourcePersistenceError do
     error = ResourcePersistenceError.new errors:     'lots of errors',
                                          attributes: 'what is the matrix'
 
-    expect(error.developer_details).to eql('errors'     => 'lots of errors',
-                                           'attributes' => 'what is the matrix')
+    expect(error.source).to eql('errors'     => 'lots of errors',
+                                'attributes' => 'what is the matrix')
   end
 
   it 'includes the resource name and action in the friendly message' do

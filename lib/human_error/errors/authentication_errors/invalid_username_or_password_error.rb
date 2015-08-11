@@ -17,7 +17,7 @@ class   InvalidUsernameOrPasswordError < RequestError
     'double-check and try again.'
   end
 
-  def developer_details
+  def source
     { username: username, password: '[FILTERED]' }
   end
 

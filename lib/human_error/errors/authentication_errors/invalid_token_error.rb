@@ -17,7 +17,7 @@ class   InvalidTokenError < RequestError
     'Please double-check and try again.'
   end
 
-  def developer_details
+  def source
     { token: '[FILTERED]' }
   end
 

@@ -9,7 +9,7 @@ describe  RequestError do
       http_status:                 'flibbity',
       code:                        'jibbit',
       developer_message:           'I cannot receive any satisfaction',
-      developer_details:           'But perhaps if I attempt it one more time, I can',
+      source:                      'But perhaps if I attempt it one more time, I can',
       friendly_message:            'receive what I need',
       knowledgebase_article_id:    '87654321',
       api_version:                 'janky',
@@ -41,7 +41,7 @@ describe  RequestError do
       http_status:              'flibbity',
       code:                     'jibbit',
       developer_message:        'I cannot receive any satisfaction',
-      developer_details:        'But perhaps if I attempt it one more time, I can',
+      source:                   'But perhaps if I attempt it one more time, I can',
       friendly_message:         'receive what I need',
       knowledgebase_article_id: '87654321')
 
@@ -70,7 +70,7 @@ describe  RequestError do
       http_status:                 'flibbity',
       code:                        'jibbit',
       developer_message:           'I cannot receive any satisfaction',
-      developer_details:           'But perhaps if I attempt it one more time, I can',
+      source:                      'But perhaps if I attempt it one more time, I can',
       friendly_message:            'receive what I need',
       knowledgebase_article_id:    '87654321',
       api_version:                 'hanky',
