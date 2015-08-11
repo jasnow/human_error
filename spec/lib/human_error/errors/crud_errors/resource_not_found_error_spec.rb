@@ -17,6 +17,12 @@ describe  ResourceNotFoundError do
     expect(error.code).to eql 1005
   end
 
+  it 'has a title' do
+    error = ResourceNotFoundError.new
+
+    expect(error.title).to eql 'Resource Not Found'
+  end
+
   it 'has a knowledgebase article ID of 1234567890' do
     error = ResourceNotFoundError.new
 

@@ -12,6 +12,10 @@ class   InvalidUsernameOrPasswordError < RuntimeError
     401
   end
 
+  def title
+    'Invalid Username/Password'
+  end
+
   def detail
     'Either the username or password passed in or this request is invalid.  Please ' \
     'double-check and try again.'

@@ -21,6 +21,12 @@ describe  AssociationError do
     expect(error.code).to eql 1009
   end
 
+  it 'has a title' do
+    error = AssociationError.new
+
+    expect(error.title).to eql 'Association Error'
+  end
+
   it 'has a knowledgebase article ID of 1234567890' do
     error = AssociationError.new
 

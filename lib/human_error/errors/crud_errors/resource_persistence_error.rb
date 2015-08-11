@@ -29,6 +29,10 @@ class   ResourcePersistenceError < RuntimeError
     422
   end
 
+  def title
+    'Resource Persistence Error'
+  end
+
   def detail
     "One or more of the attributes on the #{resource_name} you attempted " \
     "to #{action} is invalid."

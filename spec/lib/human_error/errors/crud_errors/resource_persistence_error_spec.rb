@@ -35,6 +35,12 @@ describe  ResourcePersistenceError do
     expect(error.code).to eql 1006
   end
 
+  it 'has a title' do
+    error = ResourcePersistenceError.new
+
+    expect(error.title).to eql 'Resource Persistence Error'
+  end
+
   it 'has a knowledgebase article ID of 1234567890' do
     error = ResourcePersistenceError.new
 

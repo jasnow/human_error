@@ -21,6 +21,7 @@ module  Error
                 :code,
                 :message,
                 :http_status,
+                :title,
                 :detail,
                 :source
 
@@ -57,6 +58,7 @@ module  Error
         code:                        code,
         developer_documentation_uri: developer_documentation_uri,
         customer_support_uri:        customer_support_uri,
+        title:                       title,
         developer_message:           detail,
         developer_details:           source,
       },
@@ -65,6 +67,10 @@ module  Error
 
   def to_json(_options = {})
     JSON.dump(as_json)
+  end
+
+  def title
+    @title ||= self.class.name
   end
 
   def message

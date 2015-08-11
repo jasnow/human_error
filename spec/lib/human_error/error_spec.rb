@@ -47,6 +47,7 @@ describe  Error do
     custom_error = CustomError.new(
       http_status:                 'flibbity',
       code:                        'jibbit',
+      title:                       'roll dem bones and stones',
       detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
       knowledgebase_article_id:    '87654321',
@@ -58,6 +59,7 @@ describe  Error do
       error: {
         status:                      'flibbity',
         code:                        'jibbit',
+        title:                       'roll dem bones and stones',
         developer_documentation_uri: 'asimof/jibbit?version=janky',
         customer_support_uri:        'jinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
@@ -75,6 +77,7 @@ describe  Error do
     custom_error = CustomError.new(
       http_status:              'flibbity',
       code:                     'jibbit',
+      title:                    'roll dem bones and stones',
       detail:                   'I cannot receive any satisfaction',
       source:                   'But perhaps if I attempt it one more time, I can',
       knowledgebase_article_id: '87654321')
@@ -83,6 +86,7 @@ describe  Error do
       error: {
         status:                      'flibbity',
         code:                        'jibbit',
+        title:                       'roll dem bones and stones',
         developer_documentation_uri: 'asimof/jibbit?version=janky',
         customer_support_uri:        'jinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
@@ -100,6 +104,7 @@ describe  Error do
     custom_error = CustomError.new(
       http_status:                 'flibbity',
       code:                        'jibbit',
+      title:                       'roll dem bones and stones',
       detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
       knowledgebase_article_id:    '87654321',
@@ -111,6 +116,7 @@ describe  Error do
       error: {
         status:                      'flibbity',
         code:                        'jibbit',
+        title:                       'roll dem bones and stones',
         developer_documentation_uri: 'hasimof/jibbit?version=hanky',
         customer_support_uri:        'hinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',

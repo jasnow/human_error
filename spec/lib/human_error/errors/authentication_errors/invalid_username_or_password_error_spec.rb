@@ -14,6 +14,10 @@ describe  InvalidUsernameOrPasswordError do
     expect(error.code).to eql 1004
   end
 
+  it 'has a title' do
+    expect(error.title).to eql 'Invalid Username/Password'
+  end
+
   it 'has a knowledgebase article ID of 1234567890' do
     expect(error.knowledgebase_article_id).to eql '1234567890'
   end

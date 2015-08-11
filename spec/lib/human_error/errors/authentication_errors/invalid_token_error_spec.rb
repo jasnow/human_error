@@ -14,6 +14,10 @@ describe  InvalidTokenError do
     expect(error.code).to eql 1003
   end
 
+  it 'has a title' do
+    expect(error.title).to eql 'Invalid Token'
+  end
+
   it 'has a knowledgebase article ID of 1234567890' do
     expect(error.knowledgebase_article_id).to eql '1234567890'
   end

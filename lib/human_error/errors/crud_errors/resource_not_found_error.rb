@@ -30,6 +30,10 @@ class   ResourceNotFoundError < RuntimeError
     404
   end
 
+  def title
+    'Resource Not Found'
+  end
+
   def detail
     "The #{resource_name} you attempted to #{action} for this request is either " \
     'not authorized for the authenticated user or does not exist.'
