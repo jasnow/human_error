@@ -1,8 +1,15 @@
-require 'human_error/version'
 require 'human_error/error'
-require 'human_error/errors'
+require 'human_error/errors/authentication_error'
+require 'human_error/errors/authentication_errors/duplicate_authentication_error'
+require 'human_error/errors/authentication_errors/invalid_token_error'
+require 'human_error/errors/authentication_errors/invalid_username_or_password_error'
+require 'human_error/errors/crud_error'
+require 'human_error/errors/crud_errors/association_error'
+require 'human_error/errors/crud_errors/resource_not_found_error'
+require 'human_error/errors/crud_errors/resource_persistence_error'
 require 'human_error/rescuable_resource'
 require 'human_error/verifiable_model'
+require 'human_error/version'
 
 class   HumanError
   attr_accessor :configuration
