@@ -5,29 +5,27 @@ require 'human_error/errors/crud_errors/association_error'
 class   HumanError
 module  RescuableResource
   module ClassMethods
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
     def rescue_resource(resource_name)
       nice_resource_name = resource_name.humanize.downcase
 
-        rescue_from 'ActiveRecord::RecordInvalid',
-                    'ActiveRecord::RecordNotSaved',
-                    'ActiveRecord::RecordNotFound',
-                    'ActiveRecord::InvalidForeignKey' do |exception|
+      rescue_from 'ActiveRecord::RecordInvalid',
+                  'ActiveRecord::RecordNotSaved',
+                  'ActiveRecord::RecordNotFound',
+                  'ActiveRecord::InvalidForeignKey' do |exception|
 
-          human_error = HumanError.new.convert(exception,
-                                               resource_name: nice_resource_name,
-                                               action:        action_name)
+        human_error = HumanError.new.convert(exception,
+                                              resource_name: nice_resource_name,
+                                              action:        action_name)
 
-          render json:   human_error,
-                 status: human_error.http_status
-        end
+        render json:   human_error,
+                status: human_error.http_status
+      end
 
       rescue_from 'HumanError::Error' do |exception|
         render json:   exception,
                status: exception.http_status
       end
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
   end
 
   def self.included(base)
