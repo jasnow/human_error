@@ -6,16 +6,15 @@ class   HumanError
 module  RescuableResource
   module ClassMethods
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
-    def rescue_resource(resource_name, via:)
+    def rescue_resource(resource_name)
       nice_resource_name = resource_name.humanize.downcase
-      lookup_library     = via
 
         rescue_from 'ActiveRecord::RecordInvalid',
                     'ActiveRecord::RecordNotSaved',
                     'ActiveRecord::RecordNotFound',
                     'ActiveRecord::InvalidForeignKey' do |exception|
 
-          human_error = lookup_library.convert(exception,
+          human_error = HumanError.new.convert(exception,
                                                resource_name: nice_resource_name,
                                                action:        action_name)
 
