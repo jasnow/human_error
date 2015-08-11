@@ -27,7 +27,7 @@ describe  AssociationError do
     expect(error.title).to eql 'Association Error'
   end
 
-  it 'includes the resource name and action in the developer message' do
+  it 'includes the resource name and action in the detail' do
     error = AssociationError.new association_name: 'black leather trenchcoat',
                                  resource_name:    'Neo'
 
@@ -36,7 +36,7 @@ describe  AssociationError do
                                            'not valid.'
   end
 
-  it 'includes the resource name and action in the developer details' do
+  it 'includes the resource name and action in the source' do
     error = AssociationError.new association_name: 'black leather trenchcoat',
                                  resource_name:    'Neo',
                                  attributes:       'what is the matrix',

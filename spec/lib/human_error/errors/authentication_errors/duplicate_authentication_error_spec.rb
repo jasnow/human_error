@@ -22,7 +22,7 @@ describe  DuplicateAuthenticationError do
     expect(error.title).to eql 'Duplicate Authentication'
   end
 
-  it 'can output the developer message' do
+  it 'can output the detail' do
     expect(error.detail).to eql 'The authentication you attempted to ' \
                                            'register has already been registered by ' \
                                            'another user. We do not currently support ' \
@@ -30,7 +30,7 @@ describe  DuplicateAuthenticationError do
                                            'the same authentication.'
   end
 
-  it 'can output the developer details' do
+  it 'can output the source' do
     expect(error.source).to eql(
               'provider'         => 'flibbity',
               'provider_user_id' => '12345',

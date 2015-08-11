@@ -18,13 +18,13 @@ describe  InvalidUsernameOrPasswordError do
     expect(error.title).to eql 'Invalid Username/Password'
   end
 
-  it 'can output the developer message' do
+  it 'can output the detail' do
     expect(error.detail).to eql 'Either the username or password passed in ' \
                                            'or this request is invalid.  Please ' \
                                            'double-check and try again.'
   end
 
-  it 'can output the developer details' do
+  it 'can output the source' do
     error = InvalidUsernameOrPasswordError.new username: 'neo'
 
     expect(error.source).to eql(username: 'neo', password: '[FILTERED]')

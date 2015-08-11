@@ -41,7 +41,7 @@ describe  ResourcePersistenceError do
     expect(error.title).to eql 'Resource Persistence Error'
   end
 
-  it 'includes the resource name and action in the developer message' do
+  it 'includes the resource name and action in the detail' do
     error = ResourcePersistenceError.new resource_name: 'black leather trenchcoat',
                                          action:        'bullet time'
 
@@ -50,7 +50,7 @@ describe  ResourcePersistenceError do
                                            'time is invalid.'
   end
 
-  it 'includes the resource name and action in the developer details' do
+  it 'includes the resource name and action in the source' do
     error = ResourcePersistenceError.new errors:     'lots of errors',
                                          attributes: 'what is the matrix'
 

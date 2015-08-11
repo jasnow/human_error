@@ -18,13 +18,13 @@ describe  InvalidTokenError do
     expect(error.title).to eql 'Invalid Token'
   end
 
-  it 'can output the developer message' do
+  it 'can output the detail' do
     expect(error.detail).to eql 'The token you attempted to use for this ' \
                                            'request is invalid for this resource.  ' \
                                            'Please double-check and try again.'
   end
 
-  it 'can output the developer details' do
+  it 'can output the source' do
     expect(error.source).to eql(token: '[FILTERED]')
   end
 end

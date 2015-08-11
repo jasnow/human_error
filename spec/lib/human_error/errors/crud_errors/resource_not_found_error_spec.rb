@@ -23,7 +23,7 @@ describe  ResourceNotFoundError do
     expect(error.title).to eql 'Resource Not Found'
   end
 
-  it 'includes the resource name and action in the developer message' do
+  it 'includes the resource name and action in the detail' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       action:        'bullet time'
 
@@ -33,7 +33,7 @@ describe  ResourceNotFoundError do
                                            'or does not exist.'
   end
 
-  it 'includes the resource name and action in the developer details' do
+  it 'includes the resource name and action in the source' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   123
 
