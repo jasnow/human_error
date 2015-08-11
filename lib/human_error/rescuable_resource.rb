@@ -1,7 +1,3 @@
-require 'human_error/errors/crud_errors/resource_persistence_error'
-require 'human_error/errors/crud_errors/resource_not_found_error'
-require 'human_error/errors/crud_errors/association_error'
-
 class   HumanError
 module  RescuableResource
   module ClassMethods
