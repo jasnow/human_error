@@ -8,6 +8,7 @@ require 'human_error/errors/crud_error'
 require 'human_error/errors/crud_errors/association_error'
 require 'human_error/errors/crud_errors/resource_not_found_error'
 require 'human_error/errors/crud_errors/resource_persistence_error'
+require 'human_error/errors/request_errors/parameter_missing_error'
 require 'human_error/rescuable_resource'
 require 'human_error/verifiable_model'
 require 'human_error/version'
@@ -30,6 +31,8 @@ class   HumanError
     when 'ActiveRecord::RecordInvalid',
          'ActiveRecord::RecordNotSaved'
       fetch('ResourcePersistenceError').convert(original_error, overrides)
+    when 'ActionController::ParameterMissing',
+      fetch('ParameterMissingError').convert(original_error, overrides)
     end
   end
 

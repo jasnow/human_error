@@ -22,7 +22,8 @@ module  RescuableResource
     base.rescue_from 'ActiveRecord::RecordInvalid',
                 'ActiveRecord::RecordNotSaved',
                 'ActiveRecord::RecordNotFound',
-                'ActiveRecord::InvalidForeignKey' do |exception|
+                'ActiveRecord::InvalidForeignKey',
+                'ActionController::ParameterMissing' do |exception|
       human_error = HumanError.convert(exception,
                                        resource_name: self.class.singular_resource_name,
                                        action:        action_name)
