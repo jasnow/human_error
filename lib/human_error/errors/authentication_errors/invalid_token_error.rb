@@ -20,10 +20,6 @@ class   InvalidTokenError < RequestError
   def source
     { token: '[FILTERED]' }
   end
-
-  def friendly_message
-    'Sorry! You are not authorized to view this.'
-  end
 end
 end
 end

@@ -47,14 +47,6 @@ describe  ResourceNotFoundError do
     expect(error.source).to eql('black_leather_trenchcoat_id' => %w{123 456})
   end
 
-  it 'includes the resource name and action in the friendly message' do
-    error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
-                                      action:        'bullet time'
-
-    expect(error.friendly_message).to eql 'Sorry! The black leather trenchcoat you ' \
-                                          'tried to bullet time does not exist.'
-  end
-
   it 'can convert an "ActiveRecord::RecordNotFound" with no IDs' do
     record_not_found_error = ActiveRecord::RecordNotFound.new \
                                "Couldn't find resource without an ID"

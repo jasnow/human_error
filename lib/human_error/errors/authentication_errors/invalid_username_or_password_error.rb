@@ -20,10 +20,6 @@ class   InvalidUsernameOrPasswordError < RequestError
   def source
     { username: username, password: '[FILTERED]' }
   end
-
-  def friendly_message
-    'Either your email or password is incorrect.  Please double-check and try again.'
-  end
 end
 end
 end

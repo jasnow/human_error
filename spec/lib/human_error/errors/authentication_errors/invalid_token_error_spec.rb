@@ -27,10 +27,6 @@ describe  InvalidTokenError do
   it 'can output the developer details' do
     expect(error.source).to eql(token: '[FILTERED]')
   end
-
-  it 'can output the friendly message' do
-    expect(error.friendly_message).to eql 'Sorry! You are not authorized to view this.'
-  end
 end
 end
 end

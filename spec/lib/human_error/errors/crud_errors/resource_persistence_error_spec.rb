@@ -58,14 +58,6 @@ describe  ResourcePersistenceError do
                                 'attributes' => 'what is the matrix')
   end
 
-  it 'includes the resource name and action in the friendly message' do
-    error = ResourcePersistenceError.new resource_name: 'black leather trenchcoat',
-                                         action:        'bullet time'
-
-    expect(error.friendly_message).to eql 'Sorry! We had a problem when tried to ' \
-                                          'bullet time that black leather trenchcoat.'
-  end
-
   it 'can convert an "ActiveRecord::RecordNotSaved"' do
     record                     = HumanErrorTestModel.new
     record.valid?

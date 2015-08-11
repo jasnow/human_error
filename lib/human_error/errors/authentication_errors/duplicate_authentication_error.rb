@@ -27,10 +27,6 @@ class   DuplicateAuthenticationError < RequestError
       'user_id'          => user_id,
     }
   end
-
-  def friendly_message
-    "Sorry! Someone else has already registered this #{provider} login."
-  end
 end
 end
 end

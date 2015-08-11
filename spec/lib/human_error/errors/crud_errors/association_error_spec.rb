@@ -48,14 +48,6 @@ describe  AssociationError do
     )
   end
 
-  it 'includes the resource name and action in the friendly message' do
-    error = AssociationError.new association_name: 'black leather trenchcoat',
-                                 resource_name:    'Neo'
-
-    expect(error.friendly_message).to eql 'Sorry! There was a problem when we tried to ' \
-                                          'set the black leather trenchcoat on that Neo.'
-  end
-
   it 'can convert an "ActiveRecord::InvalidForeignKey"' do
     error = AssociationError.convert(foreign_key_error)
 

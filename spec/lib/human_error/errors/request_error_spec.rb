@@ -10,7 +10,6 @@ describe  RequestError do
       code:                        'jibbit',
       detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
-      friendly_message:            'receive what I need',
       knowledgebase_article_id:    '87654321',
       api_version:                 'janky',
       api_error_documentation_url: 'asimof',
@@ -24,7 +23,6 @@ describe  RequestError do
         customer_support_uri:        'jinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
         developer_details:           'But perhaps if I attempt it one more time, I can',
-        friendly_message:            'receive what I need',
       })
   end
 
@@ -40,7 +38,6 @@ describe  RequestError do
       code:                     'jibbit',
       detail:                   'I cannot receive any satisfaction',
       source:                   'But perhaps if I attempt it one more time, I can',
-      friendly_message:         'receive what I need',
       knowledgebase_article_id: '87654321')
 
     expect(request_error.as_json).to eql(
@@ -51,7 +48,6 @@ describe  RequestError do
         customer_support_uri:        'jinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
         developer_details:           'But perhaps if I attempt it one more time, I can',
-        friendly_message:            'receive what I need',
       })
   end
 
@@ -67,7 +63,6 @@ describe  RequestError do
       code:                        'jibbit',
       detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
-      friendly_message:            'receive what I need',
       knowledgebase_article_id:    '87654321',
       api_version:                 'hanky',
       api_error_documentation_url: 'hasimof',
@@ -81,7 +76,6 @@ describe  RequestError do
         customer_support_uri:        'hinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
         developer_details:           'But perhaps if I attempt it one more time, I can',
-        friendly_message:            'receive what I need',
       })
   end
 end

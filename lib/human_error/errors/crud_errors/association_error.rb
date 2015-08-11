@@ -44,11 +44,6 @@ class   AssociationError < RequestError
       "#{association_name} id" => association_id,
     }
   end
-
-  def friendly_message
-    "Sorry! There was a problem when we tried to set the #{association_name} on " \
-    "that #{resource_name}."
-  end
 end
 end
 end

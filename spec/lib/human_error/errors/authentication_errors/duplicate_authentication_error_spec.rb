@@ -37,11 +37,6 @@ describe  DuplicateAuthenticationError do
               'user_id'          => '54321',
     )
   end
-
-  it 'can output the friendly message' do
-    expect(error.friendly_message).to eql 'Sorry! Someone else has already registered ' \
-                                          'this flibbity login.'
-  end
 end
 end
 end

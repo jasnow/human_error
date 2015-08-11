@@ -7,8 +7,7 @@ class   RequestError < RuntimeError
 
   attr_accessor :http_status,
                 :detail,
-                :source,
-                :friendly_message
+                :source
 
   def as_json(_options = {})
     {
@@ -19,7 +18,6 @@ class   RequestError < RuntimeError
         customer_support_uri:        customer_support_uri,
         developer_message:           detail,
         developer_details:           source,
-        friendly_message:            friendly_message,
       },
     }
   end

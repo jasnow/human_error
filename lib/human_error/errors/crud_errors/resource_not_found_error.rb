@@ -39,10 +39,6 @@ class   ResourceNotFoundError < RequestError
     { "#{resource_name_underscored}_id" => resource_id }
   end
 
-  def friendly_message
-    "Sorry! The #{resource_name} you tried to #{action} does not exist."
-  end
-
   def action
     @action || 'access'
   end

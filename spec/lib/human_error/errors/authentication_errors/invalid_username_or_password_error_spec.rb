@@ -29,11 +29,6 @@ describe  InvalidUsernameOrPasswordError do
 
     expect(error.source).to eql(username: 'neo', password: '[FILTERED]')
   end
-
-  it 'can output the friendly message' do
-    expect(error.friendly_message).to eql 'Either your email or password is ' \
-                                          'incorrect.  Please double-check and try again.'
-  end
 end
 end
 end

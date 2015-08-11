@@ -40,10 +40,6 @@ class   ResourcePersistenceError < RequestError
       'attributes' => attributes,
     }
   end
-
-  def friendly_message
-    "Sorry! We had a problem when tried to #{action} that #{resource_name}."
-  end
 end
 end
 end
