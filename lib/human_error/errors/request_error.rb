@@ -5,10 +5,6 @@ module  Errors
 class   RequestError < RuntimeError
   include HumanError::Error
 
-  attr_accessor :http_status,
-                :detail,
-                :source
-
   def as_json(_options = {})
     {
       error: {

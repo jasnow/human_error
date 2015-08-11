@@ -19,7 +19,10 @@ module  Error
                 :knowledgebase_url,
                 :knowledgebase_article_id,
                 :code,
-                :message
+                :message,
+                :http_status,
+                :detail,
+                :source
 
   def initialize(**args)
     self.api_version                 = configuration.api_version
@@ -59,10 +62,6 @@ module  Error
     @message || detail
   rescue NoMethodError
     super
-  end
-
-  def detail
-    fail NoMethodError, 'This method must be implemented in a subclass'
   end
 
   def self.included(base)
