@@ -57,16 +57,20 @@ describe  Error do
       knowledgebase_url:           'jinkies')
 
     expect(custom_error.as_json).to eql(
-      error: {
-        id:                          'identifier',
-        status:                      'flibbity',
-        code:                        'jibbit',
-        title:                       'roll dem bones and stones',
-        developer_documentation_url: 'asimof/jibbit?version=janky',
-        external_documentation_url:  'jinkies/87654321',
-        developer_message:           'I cannot receive any satisfaction',
-        developer_details:           'But perhaps if I attempt it one more time, I can',
-      })
+      errors: [
+        {
+          id:     'identifier',
+          links:  {
+            about:         'jinkies/87654321',
+            documentation: 'asimof/jibbit?version=janky',
+          },
+          status: 'flibbity',
+          code:   'jibbit',
+          title:  'roll dem bones and stones',
+          detail: 'I cannot receive any satisfaction',
+          source: 'But perhaps if I attempt it one more time, I can',
+        }
+      ])
   end
 
   it 'can extract configuration from the global config if it is not passed in' do
@@ -86,16 +90,20 @@ describe  Error do
       knowledgebase_article_id: '87654321')
 
     expect(custom_error.as_json).to eql(
-      error: {
-        id:                          'identifier',
-        status:                      'flibbity',
-        code:                        'jibbit',
-        title:                       'roll dem bones and stones',
-        developer_documentation_url: 'asimof/jibbit?version=janky',
-        external_documentation_url:  'jinkies/87654321',
-        developer_message:           'I cannot receive any satisfaction',
-        developer_details:           'But perhaps if I attempt it one more time, I can',
-      })
+      errors: [
+        {
+          id:     'identifier',
+          links:  {
+            about:         'jinkies/87654321',
+            documentation: 'asimof/jibbit?version=janky',
+          },
+          status: 'flibbity',
+          code:   'jibbit',
+          title:  'roll dem bones and stones',
+          detail: 'I cannot receive any satisfaction',
+          source: 'But perhaps if I attempt it one more time, I can',
+        }
+      ])
   end
 
   it 'can override the global config if it is set, but an explicit value is passed in' do
@@ -118,16 +126,20 @@ describe  Error do
       knowledgebase_url:           'hinkies')
 
     expect(custom_error.as_json).to eql(
-      error: {
-        id:                          'identifier',
-        status:                      'flibbity',
-        code:                        'jibbit',
-        title:                       'roll dem bones and stones',
-        developer_documentation_url: 'hasimof/jibbit?version=hanky',
-        external_documentation_url:  'hinkies/87654321',
-        developer_message:           'I cannot receive any satisfaction',
-        developer_details:           'But perhaps if I attempt it one more time, I can',
-      })
+      errors: [
+        {
+          id:     'identifier',
+          links:  {
+            about:         'hinkies/87654321',
+            documentation: 'hasimof/jibbit?version=hanky',
+          },
+          status: 'flibbity',
+          code:   'jibbit',
+          title:  'roll dem bones and stones',
+          detail: 'I cannot receive any satisfaction',
+          source: 'But perhaps if I attempt it one more time, I can',
+        }
+      ])
   end
 end
 end

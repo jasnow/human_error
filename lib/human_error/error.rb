@@ -37,16 +37,20 @@ module  Error
 
   def as_json(_options = {})
     {
-      error: {
-        id:                          id,
-        status:                      http_status,
-        code:                        code,
-        developer_documentation_url: developer_documentation_url,
-        external_documentation_url:  external_documentation_url,
-        title:                       title,
-        developer_message:           detail,
-        developer_details:           source,
-      },
+      errors: [
+        {
+          id:     id,
+          links:  {
+            about:         external_documentation_url,
+            documentation: developer_documentation_url,
+          },
+          status: http_status,
+          code:   code,
+          title:  title,
+          detail: detail,
+          source: source,
+        },
+      ],
     }
   end
 
