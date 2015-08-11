@@ -11,25 +11,10 @@ module  RescuableResource
       lookup_library     = via
 
         rescue_from 'ActiveRecord::RecordInvalid',
-                    'ActiveRecord::RecordNotSaved' do |exception|
-          human_error = lookup_library.convert(exception,
-                                               resource_name: nice_resource_name,
-                                               action:        action_name)
+                    'ActiveRecord::RecordNotSaved',
+                    'ActiveRecord::RecordNotFound',
+                    'ActiveRecord::InvalidForeignKey' do |exception|
 
-          render json:   human_error,
-                 status: human_error.http_status
-        end
-
-        rescue_from 'ActiveRecord::RecordNotFound' do |exception|
-          human_error = lookup_library.convert(exception,
-                                               resource_name: nice_resource_name,
-                                               action:        action_name)
-
-          render json:   human_error,
-                 status: human_error.http_status
-        end
-
-        rescue_from 'ActiveRecord::InvalidForeignKey' do |exception|
           human_error = lookup_library.convert(exception,
                                                resource_name: nice_resource_name,
                                                action:        action_name)
