@@ -75,7 +75,9 @@ describe  Error do
       ])
   end
 
-  it 'can extract configuration from the global config if it is not passed in' do
+  it 'can extract configuration from the global config if it is not passed in',
+     singletons: HumanError::Configuration do
+
     HumanError.configure do |config|
       config.url_mappings = {
         'external_documentation_urls' => {
@@ -113,7 +115,9 @@ describe  Error do
       ])
   end
 
-  it 'can override the global config if it is set, but an explicit value is passed in' do
+  it 'can override the global config if it is set, but an explicit value is passed in',
+     singletons: HumanError::Configuration do
+
     HumanError.configure do |config|
       config.url_mappings = {
         'external_documentation_urls' => {

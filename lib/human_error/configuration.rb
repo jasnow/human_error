@@ -1,5 +1,9 @@
+require 'singleton'
+
 class   HumanError
   class Configuration
+    include Singleton
+
     attr_accessor :url_mappings,
                   :api_version,
                   :api_error_documentation_url,
@@ -29,11 +33,15 @@ class   HumanError
     end
   end
 
+  def configuration
+    Configuration.instance
+  end
+
   def self.configure
     yield configuration
   end
 
   def self.configuration
-    @configuration ||= Configuration.new
+    Configuration.instance
   end
 end

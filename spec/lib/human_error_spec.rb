@@ -11,7 +11,7 @@ describe HumanError do
     expect(HumanError.new).to be_a HumanError
   end
 
-  it 'can configure each instance' do
+  it 'can configure each instance', singletons: HumanError::Configuration do
     human_error = HumanError.new do |config|
                     config.api_version = 'foo'
     end
@@ -25,7 +25,7 @@ describe HumanError do
     expect(human_error.fetch('InvalidTokenError')).to eql HumanError::Errors::InvalidTokenError
   end
 
-  it 'can lookup errors based on the local configuration' do
+  it 'can lookup errors based on the local configuration', singletons: HumanError::Configuration do
     human_error = HumanError.new do |config|
       config.api_version = 'foo'
     end
@@ -36,7 +36,7 @@ describe HumanError do
   end
 
   it 'can override values in the global configuration with values in the local' \
-     'configuration when looking up an error' do
+     'configuration when looking up an error', singletons: HumanError::Configuration do
 
     HumanError.configure do |config|
       config.api_version = 'bar'
@@ -52,7 +52,7 @@ describe HumanError do
   end
 
   it 'can override values in the local configuration with explicit values passed when' \
-     'looking up an error' do
+     'looking up an error', singletons: HumanError::Configuration do
 
     human_error = HumanError.new do |config|
       config.api_version = 'foo'

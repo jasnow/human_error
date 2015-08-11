@@ -12,11 +12,7 @@ require 'human_error/verifiable_model'
 require 'human_error/version'
 
 class   HumanError
-  attr_accessor :configuration
-
   def initialize
-    self.configuration = Configuration.new
-
     yield configuration if block_given?
   end
 
