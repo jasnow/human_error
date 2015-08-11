@@ -71,6 +71,12 @@ module  Error
     @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
   end
 
+  def http_status
+    @http_status ||= 500
+  end
+
+  alias_method :status, :http_status
+
   def code
     @code || ErrorCodeDirectory.lookup(self.class.name)
   end
