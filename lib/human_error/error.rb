@@ -101,8 +101,6 @@ module  Error
 
   def to_s
     @message || detail
-  rescue NoMethodError
-    super
   end
 
   def self.included(base)
