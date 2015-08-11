@@ -1,3 +1,48 @@
+Version v3.0.0 - August 11, 2015
+================================================================================
+
+Changed
+--------------------------------------------------------------------------------
+  * VerifiableModel to VerifiableResource and simplified
+  * HumanError to be uninstantiable
+  * RescuableResource so it doesn't need called
+  * RescuableResource's rescue_froms to be simpler
+  * Configuration into a singleton
+  * Switch from building URLs to using error URL mappings
+  * codes to use underscores between words
+  * To use the new JSON API format
+  * Rename customer_support_uri
+  * Rename developer_documentation_uri to url
+  * error code into the error's key
+  * Moved as_json into main module
+  * Moved common accessors into main module
+  * Rename developer_message to details
+  * Rename developer_details to source
+  * Move base_message_key to base module
+
+Added
+--------------------------------------------------------------------------------
+  * UnpermittedParametersError
+  * ParameterMissingError
+  * resource name methods to RescuableResource
+  * Default source information
+  * Default error detail text
+  * Default HTTP status
+  * id to the error
+  * title to the error
+  * .ctags configuration file
+
+Removed
+--------------------------------------------------------------------------------
+  * Unneeded requires
+  * via as an option from RescuableResource
+  * 'from' as an option from RescuableResource
+  * Anything having to do with building URLs
+  * Unneeded rescue
+  * RequestError superclass
+  * friendly message
+  * message keys
+
 Version v2.0.0 - April 10, 2015
 ================================================================================
 
@@ -58,9 +103,6 @@ Version v1.13.1 - February 17, 2015
 Fixed
 --------------------------------------------------------------------------------
   * resource name in developer details needs to be underscored
-
-Version v1.13.0 - November 5, 2014
-================================================================================
 
 Feature
 --------------------------------------------------------------------------------
