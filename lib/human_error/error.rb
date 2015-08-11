@@ -19,12 +19,12 @@ module  Error
                 :api_error_documentation_url,
                 :knowledgebase_url,
                 :knowledgebase_article_id,
-                :code,
-                :message,
                 :http_status,
+                :code,
                 :title,
                 :detail,
-                :source
+                :source,
+                :message
 
   def initialize(**args)
     self.api_version                 = configuration.api_version
@@ -32,24 +32,8 @@ module  Error
     self.knowledgebase_url           = configuration.knowledgebase_url
 
     args.each do |variable, value|
-      send("#{variable}=", value)
+      public_send("#{variable}=", value)
     end
-  end
-
-  def code
-    @code || ErrorCodeDirectory.lookup(self.class.name)
-  end
-
-  def knowledgebase_article_id
-    @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
-  end
-
-  def developer_documentation_uri
-    "#{api_error_documentation_url}/#{code}?version=#{api_version}"
-  end
-
-  def customer_support_uri
-    "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end
 
   def as_json(_options = {})
@@ -73,6 +57,22 @@ module  Error
 
   def id
     @id ||= SecureRandom.uuid
+  end
+
+  def customer_support_uri
+    "#{knowledgebase_url}/#{knowledgebase_article_id}"
+  end
+
+  def developer_documentation_uri
+    "#{api_error_documentation_url}/#{code}?version=#{api_version}"
+  end
+
+  def knowledgebase_article_id
+    @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
+  end
+
+  def code
+    @code || ErrorCodeDirectory.lookup(self.class.name)
   end
 
   def title
