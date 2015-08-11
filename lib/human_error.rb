@@ -1,3 +1,4 @@
+require 'human_error/configuration'
 require 'human_error/error'
 require 'human_error/errors/authentication_error'
 require 'human_error/errors/authentication_errors/duplicate_authentication_error'
@@ -12,19 +13,15 @@ require 'human_error/verifiable_model'
 require 'human_error/version'
 
 class   HumanError
-  def initialize
-    yield configuration if block_given?
-  end
-
-  def fetch(error_type)
+  def self.fetch(error_type)
     Object.const_get("HumanError::Errors::#{error_type}")
   end
 
-  def build(error_type, overrides = {})
+  def self.build(error_type, overrides = {})
     fetch(error_type).new(overrides)
   end
 
-  def convert(original_error, overrides = {})
+  def self.convert(original_error, overrides = {})
     case original_error.class.name
     when 'ActiveRecord::InvalidForeignKey'
       fetch('AssociationError').convert(original_error, overrides)
@@ -36,7 +33,7 @@ class   HumanError
     end
   end
 
-  def raise(error_type, **args)
+  def self.raise(error_type, **args)
     Kernel.raise build(error_type, **args)
   end
 end

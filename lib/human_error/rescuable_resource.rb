@@ -28,9 +28,9 @@ module  RescuableResource
                 'ActiveRecord::RecordNotFound',
                 'ActiveRecord::InvalidForeignKey' do |exception|
 
-      human_error = HumanError.new.convert(exception,
-                                            resource_name: self.class.singular_resource_name,
-                                            action:        action_name)
+      human_error = HumanError.convert(exception,
+                                       resource_name: self.class.singular_resource_name,
+                                       action:        action_name)
 
       render json:   human_error,
              status: human_error.http_status
