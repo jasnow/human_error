@@ -6,11 +6,10 @@ class   HumanError
 module  RescuableResource
   module ClassMethods
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Style/GuardClause
-    def rescue_resource(resource_name, from:, via:)
+    def rescue_resource(resource_name, via:)
       nice_resource_name = resource_name.humanize.downcase
       lookup_library     = via
 
-      if from.include? 'persistence'
         rescue_from 'ActiveRecord::RecordInvalid',
                     'ActiveRecord::RecordNotSaved' do |exception|
           human_error = lookup_library.convert(exception,
@@ -20,9 +19,7 @@ module  RescuableResource
           render json:   human_error,
                  status: human_error.http_status
         end
-      end
 
-      if from.include? 'not_found'
         rescue_from 'ActiveRecord::RecordNotFound' do |exception|
           human_error = lookup_library.convert(exception,
                                                resource_name: nice_resource_name,
@@ -31,9 +28,7 @@ module  RescuableResource
           render json:   human_error,
                  status: human_error.http_status
         end
-      end
 
-      if from.include? 'association'
         rescue_from 'ActiveRecord::InvalidForeignKey' do |exception|
           human_error = lookup_library.convert(exception,
                                                resource_name: nice_resource_name,
@@ -42,7 +37,6 @@ module  RescuableResource
           render json:   human_error,
                  status: human_error.http_status
         end
-      end
 
       rescue_from 'HumanError::Error' do |exception|
         render json:   exception,
