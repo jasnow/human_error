@@ -1,5 +1,4 @@
 require 'human_error/error'
-require 'human_error/utilities/string'
 
 class   HumanError
 module  Errors
@@ -35,13 +34,6 @@ class   RequestError < RuntimeError
 
   def friendly_message_key
     "#{base_message_key}.friendly"
-  end
-
-  def base_message_key
-    HumanError::Utilities::String.
-      underscore(self.class.name).
-      gsub(%r{\A[^/]+/}, '').
-      gsub(%r{[_/]}, '.')
   end
 end
 end

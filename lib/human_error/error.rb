@@ -2,6 +2,7 @@ require 'json'
 require 'human_error/configuration'
 require 'human_error/error_code_directory'
 require 'human_error/knowledgebase_id_directory'
+require 'human_error/utilities/string'
 
 class   HumanError
 module  Error
@@ -72,6 +73,13 @@ module  Error
 
   def configuration
     HumanError.configuration
+  end
+
+  def base_message_key
+    HumanError::Utilities::String.
+      underscore(self.class.name).
+      gsub(%r{\A[^/]+/}, '').
+      gsub(%r{[_/]}, '.')
   end
 end
 end
