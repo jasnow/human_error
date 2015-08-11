@@ -67,7 +67,7 @@ describe  Error do
           title:  'roll dem bones and stones',
           detail: 'I cannot receive any satisfaction',
           source: 'But perhaps if I attempt it one more time, I can',
-        }
+        },
       ])
   end
 
@@ -76,7 +76,7 @@ describe  Error do
 
     HumanError.configure do |config|
       config.url_mappings = {
-        'external_documentation_urls' => {
+        'external_documentation_urls'  => {
           'jibbit' => 'http://example.com/edu',
         },
         'developer_documentation_urls' => {
@@ -86,12 +86,12 @@ describe  Error do
     end
 
     custom_error = CustomError.new(
-      id:                          'identifier',
-      http_status:              'flibbity',
-      code:                     'jibbit',
-      title:                    'roll dem bones and stones',
-      detail:                   'I cannot receive any satisfaction',
-      source:                   'But perhaps if I attempt it one more time, I can')
+      id:          'identifier',
+      http_status: 'flibbity',
+      code:        'jibbit',
+      title:       'roll dem bones and stones',
+      detail:      'I cannot receive any satisfaction',
+      source:      'But perhaps if I attempt it one more time, I can')
 
     expect(custom_error.as_json).to eql(
       errors: [
@@ -106,7 +106,7 @@ describe  Error do
           title:  'roll dem bones and stones',
           detail: 'I cannot receive any satisfaction',
           source: 'But perhaps if I attempt it one more time, I can',
-        }
+        },
       ])
   end
 
@@ -115,7 +115,7 @@ describe  Error do
 
     HumanError.configure do |config|
       config.url_mappings = {
-        'external_documentation_urls' => {
+        'external_documentation_urls'  => {
           'jibbit' => 'http://example.com/edu',
         },
         'developer_documentation_urls' => {
@@ -147,18 +147,18 @@ describe  Error do
           title:  'roll dem bones and stones',
           detail: 'I cannot receive any satisfaction',
           source: 'But perhaps if I attempt it one more time, I can',
-        }
+        },
       ])
   end
 
   it 'can handle if it finds no URL mappings' do
     custom_error = CustomError.new(
-      id:                          'identifier',
-      http_status:                 'flibbity',
-      code:                        'jibbit',
-      title:                       'roll dem bones and stones',
-      detail:                      'I cannot receive any satisfaction',
-      source:                      'But perhaps if I attempt it one more time, I can')
+      id:          'identifier',
+      http_status: 'flibbity',
+      code:        'jibbit',
+      title:       'roll dem bones and stones',
+      detail:      'I cannot receive any satisfaction',
+      source:      'But perhaps if I attempt it one more time, I can')
 
     expect(custom_error.as_json).to eql(
       errors: [
@@ -173,7 +173,7 @@ describe  Error do
           title:  'roll dem bones and stones',
           detail: 'I cannot receive any satisfaction',
           source: 'But perhaps if I attempt it one more time, I can',
-        }
+        },
       ])
   end
 end

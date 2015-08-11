@@ -8,7 +8,8 @@ describe HumanError do
   end
 
   it 'can lookup errors' do
-    expect(HumanError.fetch('InvalidTokenError')).to eql HumanError::Errors::InvalidTokenError
+    expect(HumanError.fetch('InvalidTokenError')).to \
+      eql HumanError::Errors::InvalidTokenError
   end
 
   it 'can raise an error' do
