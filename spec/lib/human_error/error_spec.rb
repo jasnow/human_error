@@ -63,7 +63,7 @@ describe  Error do
         code:                        'jibbit',
         title:                       'roll dem bones and stones',
         developer_documentation_url: 'asimof/jibbit?version=janky',
-        customer_support_uri:        'jinkies/87654321',
+        external_documentation_url:  'jinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
         developer_details:           'But perhaps if I attempt it one more time, I can',
       })
@@ -92,7 +92,7 @@ describe  Error do
         code:                        'jibbit',
         title:                       'roll dem bones and stones',
         developer_documentation_url: 'asimof/jibbit?version=janky',
-        customer_support_uri:        'jinkies/87654321',
+        external_documentation_url:  'jinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
         developer_details:           'But perhaps if I attempt it one more time, I can',
       })
@@ -124,7 +124,7 @@ describe  Error do
         code:                        'jibbit',
         title:                       'roll dem bones and stones',
         developer_documentation_url: 'hasimof/jibbit?version=hanky',
-        customer_support_uri:        'hinkies/87654321',
+        external_documentation_url:  'hinkies/87654321',
         developer_message:           'I cannot receive any satisfaction',
         developer_details:           'But perhaps if I attempt it one more time, I can',
       })

@@ -42,7 +42,7 @@ module  Error
         status:                      http_status,
         code:                        code,
         developer_documentation_url: developer_documentation_url,
-        customer_support_uri:        customer_support_uri,
+        external_documentation_url:  external_documentation_url,
         title:                       title,
         developer_message:           detail,
         developer_details:           source,
@@ -58,7 +58,7 @@ module  Error
     @id ||= SecureRandom.uuid
   end
 
-  def customer_support_uri
+  def external_documentation_url
     "#{knowledgebase_url}/#{knowledgebase_article_id}"
   end
 
