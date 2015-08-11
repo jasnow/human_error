@@ -33,12 +33,12 @@ module  RescuableResource
                                             action:        action_name)
 
       render json:   human_error,
-              status: human_error.http_status
+             status: human_error.http_status
     end
 
     base.rescue_from 'HumanError::Error' do |exception|
       render json:   exception,
-              status: exception.http_status
+             status: exception.http_status
     end
   end
 end
