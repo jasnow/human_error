@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir['{test,spec,features}/**/*']
 
   spec.add_development_dependency 'rspec',        ["~> 3.0"]
-  spec.add_development_dependency 'rspectacular', ["~> 0.50"]
+  spec.add_development_dependency 'rspectacular', ["~> 0.64"]
   spec.add_development_dependency 'activerecord', ["~> 4.1"]
 end

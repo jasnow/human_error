@@ -45,7 +45,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    rspectacular (0.63.0)
+    rspectacular (0.64.0)
       fuubar (~> 2.0)
       rspec (~> 3.1)
     ruby-progressbar (1.7.5)
@@ -62,7 +62,7 @@ DEPENDENCIES
   chamber
   human_error!
   rspec (~> 3.0)
-  rspectacular (~> 0.50)
+  rspectacular
 
 BUNDLED WITH
    1.10.5
