@@ -85,6 +85,10 @@ module  Error
     @title ||= self.class.name
   end
 
+  def detail
+    @detail ||= 'The server encountered an error.'
+  end
+
   def message
     to_s
   end
