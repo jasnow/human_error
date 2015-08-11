@@ -30,7 +30,7 @@ class   ResourceNotFoundError < RequestError
     404
   end
 
-  def developer_message
+  def detail
     "The #{resource_name} you attempted to #{action} for this request is either " \
     'not authorized for the authenticated user or does not exist.'
   end

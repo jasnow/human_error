@@ -33,7 +33,7 @@ class   AssociationError < RequestError
     422
   end
 
-  def developer_message
+  def detail
     "The #{association_name} that you attempted to associate with " \
     "the #{resource_name} was not valid."
   end

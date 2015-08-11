@@ -12,7 +12,7 @@ class   InvalidUsernameOrPasswordError < RequestError
     401
   end
 
-  def developer_message
+  def detail
     'Either the username or password passed in or this request is invalid.  Please ' \
     'double-check and try again.'
   end

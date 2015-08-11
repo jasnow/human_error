@@ -56,12 +56,12 @@ module  Error
   end
 
   def to_s
-    @message || developer_message
+    @message || detail
   rescue NoMethodError
     super
   end
 
-  def developer_message
+  def detail
     fail NoMethodError, 'This method must be implemented in a subclass'
   end
 

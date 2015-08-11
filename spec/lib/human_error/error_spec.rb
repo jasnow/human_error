@@ -37,7 +37,7 @@ describe  Error do
 
   it 'can have its message explicitly set when it is generated' do
     error = CustomError.new
-    allow(error).to receive(:developer_message).
+    allow(error).to receive(:detail).
                     and_return('My Developer Message')
 
     expect(error.message).to eql 'My Developer Message'

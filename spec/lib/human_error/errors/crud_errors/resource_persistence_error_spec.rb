@@ -45,7 +45,7 @@ describe  ResourcePersistenceError do
     error = ResourcePersistenceError.new resource_name: 'black leather trenchcoat',
                                          action:        'bullet time'
 
-    expect(error.developer_message).to eql 'One or more of the attributes on the black ' \
+    expect(error.detail).to eql 'One or more of the attributes on the black ' \
                                            'leather trenchcoat you attempted to bullet ' \
                                            'time is invalid.'
   end

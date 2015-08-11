@@ -14,7 +14,7 @@ class   DuplicateAuthenticationError < RequestError
     409
   end
 
-  def developer_message
+  def detail
     'The authentication you attempted to register has already been registered by ' \
     'another user. We do not currently support allowing multiple users to be connected ' \
     'to the same authentication.'

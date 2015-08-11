@@ -19,7 +19,7 @@ describe  InvalidUsernameOrPasswordError do
   end
 
   it 'can output the developer message' do
-    expect(error.developer_message).to eql 'Either the username or password passed in ' \
+    expect(error.detail).to eql 'Either the username or password passed in ' \
                                            'or this request is invalid.  Please ' \
                                            'double-check and try again.'
   end

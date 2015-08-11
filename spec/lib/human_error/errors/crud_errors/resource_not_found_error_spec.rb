@@ -27,7 +27,7 @@ describe  ResourceNotFoundError do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       action:        'bullet time'
 
-    expect(error.developer_message).to eql 'The black leather trenchcoat you attempted ' \
+    expect(error.detail).to eql 'The black leather trenchcoat you attempted ' \
                                            'to bullet time for this request is either ' \
                                            'not authorized for the authenticated user ' \
                                            'or does not exist.'

@@ -12,7 +12,7 @@ class   InvalidTokenError < RequestError
     401
   end
 
-  def developer_message
+  def detail
     'The token you attempted to use for this request is invalid for this resource.  ' \
     'Please double-check and try again.'
   end

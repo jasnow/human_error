@@ -29,7 +29,7 @@ class   ResourcePersistenceError < RequestError
     422
   end
 
-  def developer_message
+  def detail
     "One or more of the attributes on the #{resource_name} you attempted " \
     "to #{action} is invalid."
   end

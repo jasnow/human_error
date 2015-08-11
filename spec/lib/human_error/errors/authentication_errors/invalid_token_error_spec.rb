@@ -19,7 +19,7 @@ describe  InvalidTokenError do
   end
 
   it 'can output the developer message' do
-    expect(error.developer_message).to eql 'The token you attempted to use for this ' \
+    expect(error.detail).to eql 'The token you attempted to use for this ' \
                                            'request is invalid for this resource.  ' \
                                            'Please double-check and try again.'
   end

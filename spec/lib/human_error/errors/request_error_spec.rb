@@ -8,7 +8,7 @@ describe  RequestError do
     request_error = RequestError.new(
       http_status:                 'flibbity',
       code:                        'jibbit',
-      developer_message:           'I cannot receive any satisfaction',
+      detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
       friendly_message:            'receive what I need',
       knowledgebase_article_id:    '87654321',
@@ -40,7 +40,7 @@ describe  RequestError do
     request_error = RequestError.new(
       http_status:              'flibbity',
       code:                     'jibbit',
-      developer_message:        'I cannot receive any satisfaction',
+      detail:                   'I cannot receive any satisfaction',
       source:                   'But perhaps if I attempt it one more time, I can',
       friendly_message:         'receive what I need',
       knowledgebase_article_id: '87654321')
@@ -69,7 +69,7 @@ describe  RequestError do
     request_error = RequestError.new(
       http_status:                 'flibbity',
       code:                        'jibbit',
-      developer_message:           'I cannot receive any satisfaction',
+      detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
       friendly_message:            'receive what I need',
       knowledgebase_article_id:    '87654321',

@@ -23,7 +23,7 @@ describe  DuplicateAuthenticationError do
   end
 
   it 'can output the developer message' do
-    expect(error.developer_message).to eql 'The authentication you attempted to ' \
+    expect(error.detail).to eql 'The authentication you attempted to ' \
                                            'register has already been registered by ' \
                                            'another user. We do not currently support ' \
                                            'allowing multiple users to be connected to ' \

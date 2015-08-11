@@ -6,7 +6,7 @@ class   RequestError < RuntimeError
   include HumanError::Error
 
   attr_accessor :http_status,
-                :developer_message,
+                :detail,
                 :source,
                 :friendly_message
 
@@ -18,7 +18,7 @@ class   RequestError < RuntimeError
         developer_documentation_uri: developer_documentation_uri,
         customer_support_uri:        customer_support_uri,
         developer_message_key:       developer_message_key,
-        developer_message:           developer_message,
+        developer_message:           detail,
         developer_details:           source,
         friendly_message_key:        friendly_message_key,
         friendly_message:            friendly_message,
