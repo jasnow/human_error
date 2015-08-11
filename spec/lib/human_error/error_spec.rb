@@ -52,11 +52,7 @@ describe  Error do
       detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
       developer_documentation_url: 'asimof/jibbit?version=janky',
-      external_documentation_url:  'jinkies/87654321',
-      knowledgebase_article_id:    '87654321',
-      api_version:                 'janky',
-      api_error_documentation_url: 'asimof',
-      knowledgebase_url:           'jinkies')
+      external_documentation_url:  'jinkies/87654321')
 
     expect(custom_error.as_json).to eql(
       errors: [
@@ -95,8 +91,7 @@ describe  Error do
       code:                     'jibbit',
       title:                    'roll dem bones and stones',
       detail:                   'I cannot receive any satisfaction',
-      source:                   'But perhaps if I attempt it one more time, I can',
-      knowledgebase_article_id: '87654321')
+      source:                   'But perhaps if I attempt it one more time, I can')
 
     expect(custom_error.as_json).to eql(
       errors: [
@@ -137,11 +132,7 @@ describe  Error do
       detail:                      'I cannot receive any satisfaction',
       source:                      'But perhaps if I attempt it one more time, I can',
       developer_documentation_url: 'hasimof/jibbit?version=hanky',
-      external_documentation_url:  'hinkies/87654321',
-      knowledgebase_article_id:    '87654321',
-      api_version:                 'hanky',
-      api_error_documentation_url: 'hasimof',
-      knowledgebase_url:           'hinkies')
+      external_documentation_url:  'hinkies/87654321')
 
     expect(custom_error.as_json).to eql(
       errors: [
@@ -167,11 +158,7 @@ describe  Error do
       code:                        'jibbit',
       title:                       'roll dem bones and stones',
       detail:                      'I cannot receive any satisfaction',
-      source:                      'But perhaps if I attempt it one more time, I can',
-      knowledgebase_article_id:    '87654321',
-      api_version:                 'hanky',
-      api_error_documentation_url: 'hasimof',
-      knowledgebase_url:           'hinkies')
+      source:                      'But perhaps if I attempt it one more time, I can')
 
     expect(custom_error.as_json).to eql(
       errors: [

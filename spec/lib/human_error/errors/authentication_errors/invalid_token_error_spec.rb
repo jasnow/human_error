@@ -18,10 +18,6 @@ describe  InvalidTokenError do
     expect(error.title).to eql 'Invalid Token'
   end
 
-  it 'has a knowledgebase article ID of 1234567890' do
-    expect(error.knowledgebase_article_id).to eql '1234567890'
-  end
-
   it 'can output the developer message' do
     expect(error.detail).to eql 'The token you attempted to use for this ' \
                                            'request is invalid for this resource.  ' \

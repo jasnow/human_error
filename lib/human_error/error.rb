@@ -1,6 +1,5 @@
 require 'json'
 require 'human_error/configuration'
-require 'human_error/knowledgebase_id_directory'
 require 'human_error/utilities/string'
 
 class   HumanError
@@ -14,10 +13,6 @@ module  Error
   end
 
   attr_accessor :id,
-                :api_version,
-                :api_error_documentation_url,
-                :knowledgebase_url,
-                :knowledgebase_article_id,
                 :external_documentation_url,
                 :developer_documentation_url,
                 :http_status,
@@ -28,10 +23,6 @@ module  Error
                 :message
 
   def initialize(**args)
-    self.api_version                 = configuration.api_version
-    self.api_error_documentation_url = configuration.api_error_documentation_url
-    self.knowledgebase_url           = configuration.knowledgebase_url
-
     args.each do |variable, value|
       public_send("#{variable}=", value)
     end
@@ -70,10 +61,6 @@ module  Error
 
   def developer_documentation_url
     @developer_documentation_url ||= configuration.developer_documentation_urls[code]
-  end
-
-  def knowledgebase_article_id
-    @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
   end
 
   def http_status

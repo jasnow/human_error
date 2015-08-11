@@ -27,12 +27,6 @@ describe  AssociationError do
     expect(error.title).to eql 'Association Error'
   end
 
-  it 'has a knowledgebase article ID of 1234567890' do
-    error = AssociationError.new
-
-    expect(error.knowledgebase_article_id).to eql '1234567890'
-  end
-
   it 'includes the resource name and action in the developer message' do
     error = AssociationError.new association_name: 'black leather trenchcoat',
                                  resource_name:    'Neo'

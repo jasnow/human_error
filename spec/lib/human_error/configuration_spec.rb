@@ -3,37 +3,24 @@ require 'human_error/configuration'
 
 class     HumanError
 describe  Configuration, singletons: true do
-  it 'can set the API version' do
+  it 'can set the url mappings' do
     configuration = Configuration.instance
-    configuration.api_version = 'whateeeeeever'
+    configuration.url_mappings = 'whateeeeeever'
 
-    expect(configuration.api_version).to eql 'whateeeeeever'
-  end
-
-  it 'can set the API error documentation URL' do
-    configuration = Configuration.instance
-    configuration.api_error_documentation_url = 'whateeeeeever'
-
-    expect(configuration.api_error_documentation_url).to eql 'whateeeeeever'
-  end
-
-  it 'can set the knowledgebase URL' do
-    configuration = Configuration.instance
-    configuration.knowledgebase_url = 'whateeeeeever'
-
-    expect(configuration.knowledgebase_url).to eql 'whateeeeeever'
+    expect(configuration.url_mappings).to eql 'whateeeeeever'
   end
 
   it 'can convert itself into a hash' do
-    configuration                             = Configuration.instance
-    configuration.knowledgebase_url           = 'knowledgebase_url'
-    configuration.api_error_documentation_url = 'api_error_documentation_url'
-    configuration.api_version                 = 'api_version'
+    configuration              = Configuration.instance
+    configuration.url_mappings = {
+      'external_documentation_urls'  => 'blah',
+      'developer_documentation_urls' => 'asdf',
+    }
 
     expect(configuration.to_h).to eql(
-      knowledgebase_url:           'knowledgebase_url',
-      api_error_documentation_url: 'api_error_documentation_url',
-      api_version:                 'api_version')
+      external_documentation_urls:  'blah',
+      developer_documentation_urls: 'asdf',
+    )
   end
 end
 end

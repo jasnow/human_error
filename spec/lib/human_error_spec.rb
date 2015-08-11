@@ -13,54 +13,16 @@ describe HumanError do
 
   it 'can configure each instance', singletons: HumanError::Configuration do
     human_error = HumanError.new do |config|
-                    config.api_version = 'foo'
+                    config.url_mappings = 'foo'
     end
 
-    expect(human_error.configuration.api_version).to eql 'foo'
+    expect(human_error.configuration.url_mappings).to eql 'foo'
   end
 
   it 'can lookup errors' do
     human_error = HumanError.new
 
     expect(human_error.fetch('InvalidTokenError')).to eql HumanError::Errors::InvalidTokenError
-  end
-
-  it 'can lookup errors based on the local configuration', singletons: HumanError::Configuration do
-    human_error = HumanError.new do |config|
-      config.api_version = 'foo'
-    end
-
-    fetched_error = human_error.convert(original_error)
-
-    expect(fetched_error.api_version).to eql 'foo'
-  end
-
-  it 'can override values in the global configuration with values in the local' \
-     'configuration when looking up an error', singletons: HumanError::Configuration do
-
-    HumanError.configure do |config|
-      config.api_version = 'bar'
-    end
-
-    human_error = HumanError.new do |config|
-      config.api_version = 'foo'
-    end
-
-    fetched_error = human_error.convert(original_error)
-
-    expect(fetched_error.api_version).to eql 'foo'
-  end
-
-  it 'can override values in the local configuration with explicit values passed when' \
-     'looking up an error', singletons: HumanError::Configuration do
-
-    human_error = HumanError.new do |config|
-      config.api_version = 'foo'
-    end
-
-    fetched_error = human_error.convert(original_error, api_version: 'bar')
-
-    expect(fetched_error.api_version).to eql 'bar'
   end
 
   it 'can raise an error' do

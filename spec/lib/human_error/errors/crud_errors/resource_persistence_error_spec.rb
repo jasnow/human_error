@@ -41,12 +41,6 @@ describe  ResourcePersistenceError do
     expect(error.title).to eql 'Resource Persistence Error'
   end
 
-  it 'has a knowledgebase article ID of 1234567890' do
-    error = ResourcePersistenceError.new
-
-    expect(error.knowledgebase_article_id).to eql '1234567890'
-  end
-
   it 'includes the resource name and action in the developer message' do
     error = ResourcePersistenceError.new resource_name: 'black leather trenchcoat',
                                          action:        'bullet time'

@@ -21,14 +21,10 @@ class   HumanError
   end
 
   def build(error_type, overrides = {})
-    overrides = configuration.to_h.merge(overrides)
-
     fetch(error_type).new(overrides)
   end
 
   def convert(original_error, overrides = {})
-    overrides = configuration.to_h.merge(overrides)
-
     case original_error.class.name
     when 'ActiveRecord::InvalidForeignKey'
       fetch('AssociationError').convert(original_error, overrides)
