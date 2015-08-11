@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    human_error (2.0.0)
+    human_error (3.0.0)
 
 GEM
   remote: https://rubygems.org/
