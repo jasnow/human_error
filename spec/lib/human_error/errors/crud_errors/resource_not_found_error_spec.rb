@@ -11,10 +11,10 @@ describe  ResourceNotFoundError do
     expect(error.http_status).to eql 404
   end
 
-  it 'has a code of 1005' do
+  it 'has a code' do
     error = ResourceNotFoundError.new
 
-    expect(error.code).to eql 1005
+    expect(error.code).to eql 'errors.resource.not.found.error'
   end
 
   it 'has a title' do

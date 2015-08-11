@@ -15,10 +15,10 @@ describe  AssociationError do
     expect(error.http_status).to eql 422
   end
 
-  it 'has a code of 1009' do
+  it 'has a code' do
     error = AssociationError.new
 
-    expect(error.code).to eql 1009
+    expect(error.code).to eql 'errors.association.error'
   end
 
   it 'has a title' do

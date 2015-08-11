@@ -14,8 +14,8 @@ describe  DuplicateAuthenticationError do
     expect(error.http_status).to eql 409
   end
 
-  it 'has a code of 1008' do
-    expect(error.code).to eql 1008
+  it 'has a code' do
+    expect(error.code).to eql 'errors.duplicate.authentication.error'
   end
 
   it 'has a title' do

@@ -10,8 +10,8 @@ describe  InvalidUsernameOrPasswordError do
     expect(error.http_status).to eql 401
   end
 
-  it 'has a code of 1004' do
-    expect(error.code).to eql 1004
+  it 'has a code' do
+    expect(error.code).to eql 'errors.invalid.username.or.password.error'
   end
 
   it 'has a title' do

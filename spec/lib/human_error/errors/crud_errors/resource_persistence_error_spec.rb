@@ -29,10 +29,10 @@ describe  ResourcePersistenceError do
     expect(error.http_status).to eql 422
   end
 
-  it 'has a code of 1006' do
+  it 'has a code' do
     error = ResourcePersistenceError.new
 
-    expect(error.code).to eql 1006
+    expect(error.code).to eql 'errors.resource.persistence.error'
   end
 
   it 'has a title' do

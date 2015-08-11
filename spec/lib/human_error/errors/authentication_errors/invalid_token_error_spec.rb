@@ -10,8 +10,8 @@ describe  InvalidTokenError do
     expect(error.http_status).to eql 401
   end
 
-  it 'has a code of 1003' do
-    expect(error.code).to eql 1003
+  it 'has a code' do
+    expect(error.code).to eql 'errors.invalid.token.error'
   end
 
   it 'has a title' do
