@@ -18,6 +18,8 @@ module  Error
                 :api_error_documentation_url,
                 :knowledgebase_url,
                 :knowledgebase_article_id,
+                :external_documentation_url,
+                :developer_documentation_url,
                 :http_status,
                 :code,
                 :title,
@@ -63,11 +65,11 @@ module  Error
   end
 
   def external_documentation_url
-    "#{knowledgebase_url}/#{knowledgebase_article_id}"
+    @external_documentation_url ||= configuration.external_documentation_urls[code]
   end
 
   def developer_documentation_url
-    "#{api_error_documentation_url}/#{code}?version=#{api_version}"
+    @developer_documentation_url ||= configuration.developer_documentation_urls[code]
   end
 
   def knowledgebase_article_id
