@@ -24,10 +24,12 @@ describe  ParameterMissingError do
   end
 
   it 'includes the resource name and action in the detail' do
-    error = ParameterMissingError.new parameter: 'trenchcoat'
+    error = ParameterMissingError.new resource_name: 'trenchcoat',
+                                      action:        'create',
+                                      parameter:     'color'
 
-    expect(error.detail).to eql 'trenchcoat is a required parameter, but you did not ' \
-                                'supply it.'
+    expect(error.detail).to eql "When attempting to create a trenchcoat, 'color' is " \
+                                'a required parameter.'
   end
 
   it 'includes the resource name and action in the source' do

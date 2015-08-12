@@ -24,17 +24,21 @@ describe  UnpermittedParametersError do
   end
 
   it 'includes the resource name and action in the detail' do
-    error = UnpermittedParametersError.new parameters: 'trenchcoat'
+    error = UnpermittedParametersError.new resource_name: 'trenchcoat',
+                                           action:        'create',
+                                           parameters:    'color'
 
-    expect(error.detail).to eql 'The following parameters passed are not allowed: ' \
-                                'trenchcoat'
+    expect(error.detail).to eql 'Attempting to create a trenchcoat with the ' \
+                                'following parameters is not allowed: color'
   end
 
   it 'includes the resource name and action in the detail' do
-    error = UnpermittedParametersError.new parameters: %w{trenchcoat matrix}
+    error = UnpermittedParametersError.new resource_name: 'trenchcoat',
+                                           action:        'create',
+                                           parameters:    %w{color size}
 
-    expect(error.detail).to eql 'The following parameters passed are not allowed: ' \
-                                'trenchcoat, matrix'
+    expect(error.detail).to eql 'Attempting to create a trenchcoat with the ' \
+                                'following parameters is not allowed: color, size'
   end
 
   it 'includes the resource name and action in the source' do

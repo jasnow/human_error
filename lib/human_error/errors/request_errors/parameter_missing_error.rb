@@ -2,6 +2,7 @@ class   HumanError
 module  Errors
 class   ParameterMissingError < RuntimeError
   include Error
+  include CrudError
 
   attr_accessor :parameter
 
@@ -27,7 +28,8 @@ class   ParameterMissingError < RuntimeError
   end
 
   def detail
-    "#{parameter} is a required parameter, but you did not supply it."
+    "When attempting to #{action} a #{resource_name}, '#{parameter}' is a " \
+    'required parameter.'
   end
 
   def source

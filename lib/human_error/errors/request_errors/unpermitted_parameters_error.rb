@@ -2,6 +2,7 @@ class   HumanError
 module  Errors
 class   UnpermittedParametersError < RuntimeError
   include Error
+  include CrudError
 
   attr_accessor :parameters
 
@@ -33,7 +34,8 @@ class   UnpermittedParametersError < RuntimeError
   end
 
   def detail
-    "The following parameters passed are not allowed: #{parameters.join(', ')}"
+    "Attempting to #{action} a #{resource_name} with the following parameters is " \
+    "not allowed: #{parameters.join(', ')}"
   end
 
   def source
