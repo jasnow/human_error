@@ -1,16 +1,36 @@
+require 'singleton'
+
 class   HumanError
   class Configuration
-    attr_accessor :api_version,
-                  :api_error_documentation_url,
-                  :knowledgebase_url
+    include Singleton
+
+    attr_accessor :url_mappings
+
+    def external_documentation_urls
+      @external_documentation_urls ||= url_mappings['external_documentation_urls']
+    end
+
+    def developer_documentation_urls
+      @developer_documentation_urls ||= url_mappings['developer_documentation_urls']
+    end
 
     def to_h
       {
-        knowledgebase_url:           knowledgebase_url,
-        api_error_documentation_url: api_error_documentation_url,
-        api_version:                 api_version,
+        external_documentation_urls:  external_documentation_urls,
+        developer_documentation_urls: developer_documentation_urls,
       }
     end
+
+    def url_mappings
+      @url_mappings ||= {
+        'external_documentation_urls'  => {},
+        'developer_documentation_urls' => {},
+      }
+    end
+  end
+
+  def configuration
+    Configuration.instance
   end
 
   def self.configure
@@ -18,6 +38,6 @@ class   HumanError
   end
 
   def self.configuration
-    @configuration ||= Configuration.new
+    Configuration.instance
   end
 end

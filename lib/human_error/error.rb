@@ -1,7 +1,6 @@
 require 'json'
 require 'human_error/configuration'
-require 'human_error/error_code_directory'
-require 'human_error/knowledgebase_id_directory'
+require 'human_error/utilities/string'
 
 class   HumanError
 module  Error
@@ -13,41 +12,80 @@ module  Error
     end
   end
 
-  attr_accessor :api_version,
-                :api_error_documentation_url,
-                :knowledgebase_url,
-                :knowledgebase_article_id,
+  attr_accessor :id,
+                :external_documentation_url,
+                :developer_documentation_url,
+                :http_status,
                 :code,
+                :title,
+                :detail,
+                :source,
                 :message
 
   def initialize(**args)
-    self.api_version                 = configuration.api_version
-    self.api_error_documentation_url = configuration.api_error_documentation_url
-    self.knowledgebase_url           = configuration.knowledgebase_url
-
     args.each do |variable, value|
-      send("#{variable}=", value)
+      public_send("#{variable}=", value)
     end
   end
 
-  def code
-    @code || ErrorCodeDirectory.lookup(self.class.name)
-  end
-
-  def knowledgebase_article_id
-    @knowledgebase_article_id || KnowledgebaseIdDirectory.lookup(self.class.name)
-  end
-
-  def developer_documentation_uri
-    "#{api_error_documentation_url}/#{code}?version=#{api_version}"
-  end
-
-  def customer_support_uri
-    "#{knowledgebase_url}/#{knowledgebase_article_id}"
+  def as_json(_options = {})
+    {
+      errors: [
+        {
+          id:     id,
+          links:  {
+            about:         external_documentation_url,
+            documentation: developer_documentation_url,
+          },
+          status: http_status,
+          code:   code,
+          title:  title,
+          detail: detail,
+          source: source,
+        },
+      ],
+    }
   end
 
   def to_json(_options = {})
     JSON.dump(as_json)
+  end
+
+  def id
+    @id ||= SecureRandom.uuid
+  end
+
+  def external_documentation_url
+    @external_documentation_url ||= configuration.external_documentation_urls[code]
+  end
+
+  def developer_documentation_url
+    @developer_documentation_url ||= configuration.developer_documentation_urls[code]
+  end
+
+  def http_status
+    @http_status ||= 500
+  end
+
+  alias_method :status, :http_status
+
+  def code
+    @code ||= HumanError::Utilities::String.
+                underscore(self.class.name).
+                gsub(%r{\A[^/]+/}, '').
+                gsub(%r{/}, '.')
+  end
+
+  def title
+    @title ||= self.class.name
+  end
+
+  def detail
+    @detail ||= 'The server encountered an error.'
+  end
+
+  def source
+    @source ||= {}
   end
 
   def message
@@ -55,13 +93,7 @@ module  Error
   end
 
   def to_s
-    @message || developer_message
-  rescue NoMethodError
-    super
-  end
-
-  def developer_message
-    fail NoMethodError, 'This method must be implemented in a subclass'
+    @message || detail
   end
 
   def self.included(base)

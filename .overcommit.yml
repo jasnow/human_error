@@ -16,17 +16,267 @@
 # Uncomment the following lines to make the configuration take effect.
 
 PreCommit:
-  Rubocop:
-    enabled: true
-    on_warn: warn # fail # Treat all warnings as failures
+  ALL:
+    problem_on_unmodified_line: report
+    requires_files:           true
+    required:                 false
+    quiet:                    false
+    exclude:
+      - 'bower_components/**/*'
+      - 'node_modules/**/*'
+      - 'vendor/**/*'
 
-#  TrailingWhitespace:
-#    exclude:
-#      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
-#
-#PostCheckout:
-#  ALL: # Special hook name that customizes all hooks of this type
-#   quiet: true # Change all post-checkout hooks to only display output on failure
-#
-#  IndexTags:
-#    enabled: true # Generate a tags file with `ctags` each time HEAD changes
+  AuthorEmail:
+    enabled:                  true
+
+  AuthorName:
+    enabled:                  true
+
+  BerksfileCheck:
+    enabled:                  true
+
+  Brakeman:
+    enabled:                  false
+
+  BrokenSymlinks:
+    enabled:                  true
+
+  BundleCheck:
+    enabled:                  true
+
+  CaseConflicts:
+    enabled:                  true
+
+  ChamberSecurity:
+    enabled:                  true
+
+  CoffeeLint:
+    enabled:                  true
+
+  CssLint:
+    enabled:                  true
+
+  EsLint:
+    enabled:                  false
+
+  GoLint:
+    enabled:                  true
+
+  GoVet:
+    enabled:                  true
+
+  HamlLint:
+    enabled:                  false
+
+  HardTabs:
+    enabled:                  true
+
+  HtmlTidy:
+    enabled:                  false
+
+  ImageOptim:
+    enabled:                  false
+
+  JavaCheckstyle:
+    enabled:                  true
+
+  Jscs:
+    enabled:                  true
+
+  JsHint:
+    enabled:                  true
+
+  JsLint:
+    enabled:                  false
+
+  Jsl:
+    enabled:                  false
+
+  JsonSyntax:
+    enabled:                  true
+
+  LocalPathsInGemfile:
+    enabled:                  true
+
+  MergeConflicts:
+    enabled:                  true
+
+  Pep257:
+    enabled:                  false
+
+  Pep8:
+    enabled:                  false
+
+  Pyflakes:
+    enabled:                  false
+
+  Pylint:
+    enabled:                  false
+
+  PythonFlake8:
+    enabled:                  false
+
+  RailsSchemaUpToDate:
+    enabled:                  true
+    include:
+      - '**/db/migrate/*.rb'
+      - '**/db/schema.rb'
+      - '**/db/structure.sql'
+
+  Reek:
+    enabled:                  false
+
+  RubyLint:
+    enabled:                  false
+
+  Scalariform:
+    enabled:                  false
+
+  Scalastyle:
+    enabled:                  false
+
+  RuboCop:
+    enabled:                  true
+
+  ScssLint:
+    enabled:                  true
+
+  SemiStandard:
+    enabled:                  false
+
+  ShellCheck:
+    enabled:                  true
+
+  SlimLint:
+    enabled:                  false
+
+  Standard:
+    enabled:                  false
+
+  TrailingWhitespace:
+    enabled:                  true
+    exclude:                  '**/structure.sql'
+
+  TravisLint:
+    enabled:                  true
+
+  Vint:
+    enabled:                  false
+
+  W3cCss:
+    enabled:                  false
+
+  W3cHtml:
+    enabled:                  false
+
+  XmlLint:
+    enabled:                  true
+
+  XmlSyntax:
+    enabled:                  true
+
+  YamlSyntax:
+    enabled:                  true
+
+PrePush:
+  ALL:
+    requires_files:           false
+    required:                 false
+    quiet:                    false
+
+  ProtectedBranches:
+    enabled:                  false
+
+  RSpec:
+    enabled:                  false
+
+PreRebase:
+  ALL:
+    requires_files:           false
+    required:                 false
+    quiet:                    false
+
+  MergedCommits:
+    enabled:                  false
+
+CommitMsg:
+  ALL:
+    requires_files:           false
+    quiet:                    false
+
+  CapitalizedSubject:
+    enabled:                  true
+
+  GerritChangeId:
+    enabled:                  true
+
+  HardTabs:
+    enabled:                  true
+
+  RussianNovel:
+    enabled:                  false
+
+  SingleLineSubject:
+    enabled:                  true
+
+  SpellCheck:
+    enabled:                  false
+
+  TextWidth:
+    enabled:                  true
+    max_subject_width:        72
+    max_body_width:           80
+
+  TrailingPeriod:
+    enabled:                  true
+
+PostCheckout:
+  ALL:
+    required:                 false
+    quiet:                    false
+
+  BundleCheck:
+    enabled:                  true
+
+  IndexTags:
+    enabled:                  false
+
+  SubmoduleStatus:
+    enabled:                  false
+
+PostCommit:
+  ALL:
+    requires_files:           false
+    required:                 false
+    quiet:                    false
+
+  GitGuilt:
+    enabled:                  false
+
+  IndexTags:
+    enabled:                  false
+
+  SubmoduleStatus:
+    enabled:                  false
+
+PostMerge:
+  ALL:
+    requires_files:           false
+    quiet:                    false
+
+  IndexTags:
+    enabled:                  false
+
+  SubmoduleStatus:
+    enabled:                  true
+
+PostRewrite:
+  ALL:
+    requires_files:           false
+    quiet:                    false
+
+  IndexTags:
+    enabled:                  false
+
+  SubmoduleStatus:
+    enabled:                  false

@@ -1,9 +1,9 @@
 require 'human_error/errors/crud_error'
-require 'human_error/errors/request_error'
 
 class   HumanError
 module  Errors
-class   ResourcePersistenceError < RequestError
+class   ResourcePersistenceError < RuntimeError
+  include Error
   include CrudError
 
   attr_accessor :errors,
@@ -29,20 +29,20 @@ class   ResourcePersistenceError < RequestError
     422
   end
 
-  def developer_message
+  def title
+    'Resource Persistence Error'
+  end
+
+  def detail
     "One or more of the attributes on the #{resource_name} you attempted " \
     "to #{action} is invalid."
   end
 
-  def developer_details
+  def source
     {
       'errors'     => errors,
       'attributes' => attributes,
     }
-  end
-
-  def friendly_message
-    "Sorry! We had a problem when tried to #{action} that #{resource_name}."
   end
 end
 end

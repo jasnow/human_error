@@ -11,48 +11,40 @@ describe  ResourceNotFoundError do
     expect(error.http_status).to eql 404
   end
 
-  it 'has a code of 1005' do
+  it 'has a code' do
     error = ResourceNotFoundError.new
 
-    expect(error.code).to eql 1005
+    expect(error.code).to eql 'errors.resource_not_found_error'
   end
 
-  it 'has a knowledgebase article ID of 1234567890' do
+  it 'has a title' do
     error = ResourceNotFoundError.new
 
-    expect(error.knowledgebase_article_id).to eql '1234567890'
+    expect(error.title).to eql 'Resource Not Found'
   end
 
-  it 'includes the resource name and action in the developer message' do
+  it 'includes the resource name and action in the detail' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       action:        'bullet time'
 
-    expect(error.developer_message).to eql 'The black leather trenchcoat you attempted ' \
+    expect(error.detail).to eql 'The black leather trenchcoat you attempted ' \
                                            'to bullet time for this request is either ' \
                                            'not authorized for the authenticated user ' \
                                            'or does not exist.'
   end
 
-  it 'includes the resource name and action in the developer details' do
+  it 'includes the resource name and action in the source' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   123
 
-    expect(error.developer_details).to eql('black_leather_trenchcoat_id' => 123)
+    expect(error.source).to eql('black_leather_trenchcoat_id' => 123)
   end
 
   it 'can accept an array of IDs' do
     error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
                                       resource_id:   %w{123 456}
 
-    expect(error.developer_details).to eql('black_leather_trenchcoat_id' => %w{123 456})
-  end
-
-  it 'includes the resource name and action in the friendly message' do
-    error = ResourceNotFoundError.new resource_name: 'black leather trenchcoat',
-                                      action:        'bullet time'
-
-    expect(error.friendly_message).to eql 'Sorry! The black leather trenchcoat you ' \
-                                          'tried to bullet time does not exist.'
+    expect(error.source).to eql('black_leather_trenchcoat_id' => %w{123 456})
   end
 
   it 'can convert an "ActiveRecord::RecordNotFound" with no IDs' do

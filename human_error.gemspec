@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir['{test,spec,features}/**/*']
 
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rspectacular'
   spec.add_development_dependency 'activerecord'
   spec.add_development_dependency 'overcommit'
+  spec.add_development_dependency 'actionpack'
 end

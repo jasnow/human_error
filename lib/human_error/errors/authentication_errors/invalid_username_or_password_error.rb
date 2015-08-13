@@ -1,9 +1,9 @@
-require 'human_error/errors/request_error'
 require 'human_error/errors/authentication_error'
 
 class   HumanError
 module  Errors
-class   InvalidUsernameOrPasswordError < RequestError
+class   InvalidUsernameOrPasswordError < RuntimeError
+  include Error
   include AuthenticationError
 
   attr_accessor :username
@@ -12,17 +12,17 @@ class   InvalidUsernameOrPasswordError < RequestError
     401
   end
 
-  def developer_message
+  def title
+    'Invalid Username/Password'
+  end
+
+  def detail
     'Either the username or password passed in or this request is invalid.  Please ' \
     'double-check and try again.'
   end
 
-  def developer_details
+  def source
     { username: username, password: '[FILTERED]' }
-  end
-
-  def friendly_message
-    'Either your email or password is incorrect.  Please double-check and try again.'
   end
 end
 end
